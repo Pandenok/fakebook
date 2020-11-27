@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  enum gender: { Male: 0, Female: 1, Custom: 2 }
+  enum gender: { Male: 'Male', Female: 'Female', Custom: 'Custom' }
 end
