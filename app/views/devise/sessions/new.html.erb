@@ -1,20 +1,130 @@
-<h2>Log in</h2>
+<div class="max-h-screen flex flex-col bg-lgray">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email", placeholder: "Email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password", placeholder: "Password" } %>
-    <%# f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="flex-grow w-full bg-lgray pt-16 pb-28">
+    <div class="max-w-screen-lg bg-lgray py-5 mx-auto">
+
+
+      <div class="flex flex-col md:flex-row justify-around bg-lgray">
+        <div class="max-w-sm md:max-w-lg bg-lgray pr-8">
+          <div class="pt-28 bg-lgray">
+            <%# <img class="-ml-7" src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" alt="Facebook" width="300" heigth="100"/> %>
+            <img class="-my-7" src="/img/fakebook_logo_transparent.png" alt="Fakebook" width="260" heigth="100"/>
+          </div>
+          <h2 class="text-xll font-medium pb-4">Connect with friends and the world around you on Fakebook.</h2>
+        </div>
+
+        <div class="flex flex-col bg-white shadow-lg px-4 py-8 rounded-lg w-full max-w-sm">
+          <button class="relative border rounded-md py-2 text-sm text-gray-800 bg-gray-100 hover:bg-gray-200 transition duration-150 ease-in">
+            <span class="absolute left-0 top-0 flex items-center justify-center h-full w-10 text-blue-500"></span>
+            <span>Login with real Facebook</span>
+          </button>
+          <div class="relative mt-10 h-px bg-gray-300">
+            <div class="absolute left-0 top-0 flex justify-center w-full -mt-2">
+              <span class="bg-white px-4 text-xs text-gray-500 uppercase">Or Login With Email</span>
+            </div>
+          </div>
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs mt-10">
+              <div class="flex flex-col mb-4">
+                <%= f.input :email,
+                            required: false,
+                            label: false,
+                            # autofocus: true,
+                            autofocus: false,
+                            input_html: { autocomplete: "email",
+                                          placeholder: "Email",
+                                          class: "text-sm sm:text-base placeholder-gray-500 pl-4 pr-4 rounded-lg border border-gray-300 w-full py-3 focus:outline-none focus:border-blue-400 focus:shadow-md" } %>
+              </div>
+              <div class="flex flex-col mb-4">
+                <%= f.input :password,
+                            required: false,
+                            label: false,
+                            input_html: { autocomplete: "current-password",
+                                          placeholder: "Password",
+                                          class: "text-sm sm:text-base placeholder-gray-500 pl-4 pr-4 rounded-lg border border-gray-300 w-full py-3 focus:outline-none focus:border-blue-400 focus:shadow-md" } %>
+              </div>
+              <%# f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: "flex items-center justify-center focus:outline-none text-white text-xl sm:text-xl font-extrabold bg-lblue hover:bg-bluehover rounded py-3 rounded-lg w-full transition duration-150 ease-in" %>
+            </div>
+          <% end %>
+
+          <div class="flex justify-center mb-3 mt-4">
+            <%= link_to "Forgot Password?", new_password_path(resource_name), class: "inline-flex text-xs sm:text-sm text-blue-500 hover:underline" %>
+          </div>
+
+          <div class="relative mt-2 h-px bg-gray-300 mb-8"></div>
+
+          <div class="flex justify-center">
+            <%= link_to "Create New Account", new_user_registration_path, class: "flex md:w-auto items-center justify-center focus:outline-none text-white text-sm sm:text-base font-bold bg-lgreen hover:bg-greenhover rounded py-3 px-4 transition duration-150 ease-in" %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+  <footer class="w-full bottom-0 bg-white h-52 text-white text-2xl">
+    <div class="max-w-screen-lg bg-white pt-5 mx-auto">
+      <div class="flex flex-row text-xs text-gray-500">
+        <a href="" class="hover:underline">English (US)</a>
+        <a href="" class="pl-2.5 hover:underline">Italiano</a>
+        <a href="" class="pl-2.5 hover:underline">Română</a>
+        <a href="" class="pl-2.5 hover:underline">Français (France)</a>
+        <a href="" class="pl-2.5 hover:underline">Sardu</a>
+        <a href="" class="pl-2.5 hover:underline">Deutsch</a>
+        <a href="" class="pl-2.5 hover:underline">Español</a>
+        <a href="" class="pl-2.5 hover:underline">العربية</a>
+        <a href="" class="pl-2.5 hover:underline">Shqip</a>
+        <a href="" class="pl-2.5 hover:underline">Português (Brasil)</a>
+        <a href="" class="pl-2.5 hover:underline">हिन्दी</a>
+      </div>
+      <div class="relative mt-2 h-px bg-gray-300 mb-2">
+        <div class="absolute left-0 top-0 flex justify-center w-full -mt-2"></div>
+      </div>
+      <div class="flex flex-row flex-wrap text-xs text-gray-500 -ml-5 mr-2">
+        <a href="" class="pl-5 hover:underline">Sign Up</a>
+        <a href="" class="pl-5 hover:underline">Log In</a>
+        <a href="" class="pl-5 hover:underline">Messenger</a>
+        <a href="" class="pl-5 hover:underline">Facebook Lite</a>
+        <a href="" class="pl-5 hover:underline">Watch</a>
+        <a href="" class="pl-5 hover:underline">People</a>
+        <a href="" class="pl-5 hover:underline">Pages</a>
+        <a href="" class="pl-5 hover:underline">Page Categories</a>
+        <a href="" class="pl-5 hover:underline">Places</a>
+        <a href="" class="pl-5 hover:underline">Games</a>
+        <a href="" class="pl-5 hover:underline">Locations</a>
+        <a href="" class="pl-5 hover:underline">Marketplace</a>
+        <a href="" class="pl-5 hover:underline">Facebook Play</a>
+        <a href="" class="pl-5 hover:underline">Groups</a>
+        <a href="" class="pl-5 hover:underline">Jobs</a>
+        <a href="" class="pl-5 hover:underline">Oculus</a>
+        <a href="" class="pl-5 hover:underline">Portal</a>
+        <a href="" class="pl-5 hover:underline">Instagram</a>
+        <a href="" class="pl-5 hover:underline">Local</a>
+        <a href="" class="pl-5 hover:underline">Fundraisers</a>
+        <a href="" class="pl-5 hover:underline">Services</a>
+        <a href="" class="pl-5 hover:underline">Voting Information Center</a>
+        <a href="" class="pl-5 hover:underline">About</a>
+        <a href="" class="pl-5 hover:underline">Create Ad</a>
+        <a href="" class="pl-5 hover:underline">Create Page</a>
+        <a href="" class="pl-5 hover:underline">Developers</a>
+        <a href="" class="pl-5 hover:underline">Careers</a>
+        <a href="" class="pl-5 hover:underline">Privacy</a>
+        <a href="" class="pl-5 hover:underline">Cookies</a>
+        <a href="" class="pl-5 hover:underline">Ad Choices</a>
+        <a href="" class="pl-5 hover:underline">Terms</a>
+        <a href="" class="pl-5 hover:underline">Help</a>
+      </div>
+      <div class="flex flex-row flex-wrap text-xs text-gray-500 mt-5">
+        Fakebook &copy 2020
+      </div>
+    </div>
+  </footer>
+</div>
 
-<%= render "devise/shared/links" %>
+

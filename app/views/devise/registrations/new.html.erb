@@ -1,44 +1,160 @@
-<h2>Sign up</h2>
-<p>It's quick and easy.</p>
+<div class="max-h-screen flex flex-col bg-lgray">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <div class="flex-grow w-full bg-lgray pt-16 pb-28">
+    <div class="max-w-screen-lg bg-lgray py-5 mx-auto">
 
-  <div class="form-inputs">
-    <%= f.input :firstname,
-                required: true,
-                autofocus: true,
-                input_html: { placeholder: "First name" } %>
-    <%= f.input :lastname,
-                required: true,
-                autofocus: true,
-                input_html: { placeholder: "Last name" } %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email", placeholder: "Email" } %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { placeholder: "New password" } %>
-    <%= f.input :birthdate,
-                required: true,
-                label: "Birthday",
-                as: :date, start_year: Date.today.year,
-                           end_year: Date.today.year - 90,
-                           selected: Date.today,
-                           order: [:month, :day, :year] %>
-    <%= f.input :gender,
-                required: true,
-                as: :radio_buttons,
-                collection: User.genders,
-                label_method: :first,
-                value_method: :second %>
+
+      <div class="flex flex-col md:flex-row justify-around bg-lgray">
+        <div class="max-w-sm md:max-w-lg bg-lgray pr-8">
+          <div class="pt-28 bg-lgray">
+            <img class="-my-7" src="/img/fakebook_logo_transparent.png" alt="Fakebook" width="260" heigth="100"/>
+          </div>
+          <h2 class="text-xll font-medium pb-4">Connect with friends and the world around you on Fakebook.</h2>
+        </div>
+
+        <div class="flex flex-col bg-white shadow-lg p-4 rounded-lg w-full max-w-md">
+          <div class="py-2.5">
+            <div class="text-2xl font-semibold">Sign Up</div>
+            <div class="text-sm text-gray-500">It's quick and easy.</div>
+          </div>
+          <div class="relative my-1 h-px bg-gray-300 -mx-4"></div>
+
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs mt-2">
+              <div class="flex flex-row mb-2.5">
+                <div class="mr-2">
+                  <%= f.input :firstname,
+                              required: true,
+                              label: false,
+                              autofocus: true,
+                              input_html: { placeholder: "First name",
+                                            class: "bg-lgray text-sm sm:text-base placeholder-gray-600 pl-4 pr-4 rounded-md border border-gray-300 w-full py-2 focus:placeholder-gray-400 focus:outline-none" } %>
+                </div>
+                <div class="">
+                  <%= f.input :lastname,
+                              required: true,
+                              label: false,
+                              autofocus: true,
+                              input_html: { placeholder: "Last name",
+                                            class: "bg-lgray text-sm sm:text-base placeholder-gray-600 pl-4 pr-4 rounded-md border border-gray-300 w-full py-2 focus:placeholder-gray-400 focus:outline-none" } %>
+                </div>
+              </div>
+              <div class="flex flex-col mb-2.5">
+                <%= f.input :email,
+                            required: true,
+                            label: false,
+                            autofocus: true,
+                            input_html: { autocomplete: "email",
+                                          placeholder: "Email",
+                                          class: "bg-lgray text-sm sm:text-base placeholder-gray-600 pl-4 pr-4 rounded-md border border-gray-300 w-full py-2 focus:placeholder-gray-400 focus:outline-none" } %>
+              </div>
+              <div class="flex flex-col mb-2.5">
+                <%= f.input :password,
+                            required: true,
+                            label: false,
+                            input_html: { placeholder: "New password",
+                                          class: "bg-lgray text-sm sm:text-base placeholder-gray-600 pl-4 pr-4 rounded-md border border-gray-300 w-full py-2 focus:placeholder-gray-400 focus:outline-none" } %>
+              </div>
+              <div class="text-xs text-gray-600 mb-1">
+                <%= f.label "Birthday" %>
+              </div>
+              <div class="flex space-x-3">
+                <%= f.input_field :birthdate,
+                            required: true,
+                            as: :date, 
+                            start_year: Date.today.year,
+                            end_year: Date.today.year - 90,
+                            selected: Date.today,
+                            order: [:month, :day, :year],
+                            use_short_month: true,
+                            class: "flex-1 text-sm sm:text-base bg-white px-2 rounded-md border border-gray-300 py-2" %>
+              </div>
+              <div class="text-xs text-gray-600 mt-2.5 mb-1">
+                <%= f.label "Gender" %>
+              </div>
+              <%= f.input :gender,
+                          required: true,
+                          label: false, 
+                          # label_method: :first,
+                          # value_method: :second,
+                          as: :radio_buttons,
+                          collection: User.genders,
+                          wrapper_html: { class: 'flex space-x-3 -ml-3' },
+                          item_wrapper_class: "flex-1 text-sm sm:text-base bg-white px-2 rounded-md border border-gray-300 py-2", 
+                          item_label_class: "flex justify-between" %>
+            </div>
+
+            <div class="text-xs text-gray-400 my-2.5">
+              By clicking Sign Up, you agree to our <a href="" class="text-blue-700 hover:underline">Terms</a>. Learn how we collect, use and share your data in our <a href="" class="text-blue-700 hover:underline">Data Policy</a> and how we use cookies and similar technology in our <a href="" class="text-blue-700 hover:underline">Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.
+            </div>
+
+            <div class="flex justify-center py-2.5">
+              <%= f.button :submit, "Sign Up", class: "flex md:w-auto items-center justify-center focus:outline-none text-white text-lg sm:text-lg font-bold bg-signupgreen hover:bg-signupgreen rounded py-1 px-14 transition duration-150 ease-in" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <footer class="w-full bottom-0 bg-white h-52 text-white text-2xl">
+    <div class="max-w-screen-lg bg-white pt-5 mx-auto">
+      <div class="flex flex-row text-xs text-gray-500">
+        <a href="" class="hover:underline">English (US)</a>
+        <a href="" class="pl-2.5 hover:underline">Italiano</a>
+        <a href="" class="pl-2.5 hover:underline">Română</a>
+        <a href="" class="pl-2.5 hover:underline">Français (France)</a>
+        <a href="" class="pl-2.5 hover:underline">Sardu</a>
+        <a href="" class="pl-2.5 hover:underline">Deutsch</a>
+        <a href="" class="pl-2.5 hover:underline">Español</a>
+        <a href="" class="pl-2.5 hover:underline">العربية</a>
+        <a href="" class="pl-2.5 hover:underline">Shqip</a>
+        <a href="" class="pl-2.5 hover:underline">Português (Brasil)</a>
+        <a href="" class="pl-2.5 hover:underline">हिन्दी</a>
+      </div>
+      <div class="relative mt-2 h-px bg-gray-300 mb-2">
+        <div class="absolute left-0 top-0 flex justify-center w-full -mt-2"></div>
+      </div>
+      <div class="flex flex-row flex-wrap text-xs text-gray-500 -ml-5 mr-2">
+        <a href="" class="pl-5 hover:underline">Sign Up</a>
+        <a href="" class="pl-5 hover:underline">Log In</a>
+        <a href="" class="pl-5 hover:underline">Messenger</a>
+        <a href="" class="pl-5 hover:underline">Facebook Lite</a>
+        <a href="" class="pl-5 hover:underline">Watch</a>
+        <a href="" class="pl-5 hover:underline">People</a>
+        <a href="" class="pl-5 hover:underline">Pages</a>
+        <a href="" class="pl-5 hover:underline">Page Categories</a>
+        <a href="" class="pl-5 hover:underline">Places</a>
+        <a href="" class="pl-5 hover:underline">Games</a>
+        <a href="" class="pl-5 hover:underline">Locations</a>
+        <a href="" class="pl-5 hover:underline">Marketplace</a>
+        <a href="" class="pl-5 hover:underline">Facebook Play</a>
+        <a href="" class="pl-5 hover:underline">Groups</a>
+        <a href="" class="pl-5 hover:underline">Jobs</a>
+        <a href="" class="pl-5 hover:underline">Oculus</a>
+        <a href="" class="pl-5 hover:underline">Portal</a>
+        <a href="" class="pl-5 hover:underline">Instagram</a>
+        <a href="" class="pl-5 hover:underline">Local</a>
+        <a href="" class="pl-5 hover:underline">Fundraisers</a>
+        <a href="" class="pl-5 hover:underline">Services</a>
+        <a href="" class="pl-5 hover:underline">Voting Information Center</a>
+        <a href="" class="pl-5 hover:underline">About</a>
+        <a href="" class="pl-5 hover:underline">Create Ad</a>
+        <a href="" class="pl-5 hover:underline">Create Page</a>
+        <a href="" class="pl-5 hover:underline">Developers</a>
+        <a href="" class="pl-5 hover:underline">Careers</a>
+        <a href="" class="pl-5 hover:underline">Privacy</a>
+        <a href="" class="pl-5 hover:underline">Cookies</a>
+        <a href="" class="pl-5 hover:underline">Ad Choices</a>
+        <a href="" class="pl-5 hover:underline">Terms</a>
+        <a href="" class="pl-5 hover:underline">Help</a>
+      </div>
+      <div class="flex flex-row flex-wrap text-xs text-gray-500 mt-5">
+        Fakebook &copy 2020
+      </div>
+    </div>
+  </footer>
+</div>
