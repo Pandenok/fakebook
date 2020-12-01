@@ -18,4 +18,6 @@ class User < ApplicationRecord
               .unscope(where: :user_id)
               .where.not(id: user.id) },
     through: :accepted_friend_requests
+
+  has_many :posts
 end
