@@ -1,0 +1,45 @@
+class PostsController < ApplicationController
+  include PostsHelper
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @posts = Post.all
+  end
+
+  def show; end
+
+  def new
+    @post = current_user.posts.build
+  end
+
+  def edit; end
+
+  def create
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      flash[:notice] = "Post successfully created!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Something went wrong..."
+      # redirect_to new_post_
+    end
+  end
+
+  def update
+    @post.update(post_params)
+    flash[:notice] = "Post successfully updated!"
+    redirect_to post_path(@post)
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = "Post was successfully deleted!"
+    redirect_to posts_path
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+end
