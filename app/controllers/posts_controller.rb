@@ -21,14 +21,14 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:alert] = "Something went wrong..."
-      # redirect_to new_post_
+      # redirect_to posts_path
     end
   end
 
   def update
     @post.update(post_params)
     flash[:notice] = "Post successfully updated!"
-    redirect_to post_path(@post)
+    redirect_to posts_path
   end
 
   def destroy

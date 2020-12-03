@@ -32,6 +32,8 @@ module.exports = {
       lblue: '#1877f2',
       bluehover: '#166fe5',
       lgray: '#f0f2f5',
+      secondarygray: '#606770',
+      newred: '#f02849',
     },
     spacing: {
       px: '1px',
@@ -69,6 +71,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      125: '31.25rem',
     },
     animation: {
       none: 'none',
