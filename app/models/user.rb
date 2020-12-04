@@ -20,4 +20,5 @@ class User < ApplicationRecord
     through: :accepted_friend_requests
 
   has_many :posts
+  has_many :likes, dependent: :destroy
 end
