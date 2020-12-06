@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
+  include CommentsHelper
+
   def create
-    current_user.comments.create(post_id: params[:post_id])
+    current_user.comments.create(post_id: params[:post_id], body: params[:comment][:body])
     flash[:notice] = "You commented on the post!"
     redirect_to posts_path
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id])
+    @comment = current_user.comments.find(params[:post_id])
     @comment.destroy
     flash[:notice] = "Comment is successfully deleted!"
     redirect_to posts_path
