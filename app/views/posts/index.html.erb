@@ -77,7 +77,23 @@
         <p class="leading-normal pt-1 mb-2">
           <%= post.body %>
         </p>
-        <%= render partial: 'like_details', locals: { post: post } %>
+
+        <% if post.likes.any? || post.comments.any? %>
+          <div class="flex space-between items-center mb-2 text-secondarygray">
+            <% if post.likes.any? %>
+              <div class="flex">
+                <%= render partial: 'like_details', locals: { post: post } %>
+              </div>
+            <% end %>
+            <% if post.comments.any? %>
+              <div class="flex ml-auto text-sm">
+                <%= post.comments.count %> 
+                <%= post.comments.count == 1 ? "Comment" : "Comments" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
         <div class="flex justify-around border-t border-b border-gray-300 py-1 leading-8 text-secondarygray">
           <%= render partial: 'like_button', locals: { post: post } %>
           <button class="flex-1 hover:bg-gray-100 rounded">
@@ -87,16 +103,18 @@
             <span class="font-semibold">Comment</span>
           </button>
         </div>
-        <div class="flex mt-2">
-          <div class="flex">
+        <%= render partial: 'comments/feed', locals: { post: post } %>
+        <%= render partial: 'comments/form', locals: { post: post } %>
+        <%# <div class="flex mt-2"> %>
+          <%# <div class="">
             <img class="object-cover w-8 h-8 mr-2.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
-          </div>
-          <div class="flex flex-1 rounded-2xl bg-gray-100">
-            <div class="text-base text-secondarygray pl-4 pt-1">
+          </div> %>
+          <%# <div class="flex flex-1 rounded-2xl bg-gray-100"> %>
+            <%# <div class="text-base text-secondarygray pl-4 pt-1">
               Write a comment...
-            </div>
-          </div>
-        </div>
+            </div> %>
+          <%# </div> %>
+        <%# </div> %>
       </div>
     </div>
   <% end %>
