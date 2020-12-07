@@ -45,7 +45,7 @@
           </div>
           <div class="flex flex-1 flex-col">
             <div class="text-base font-semibold">
-              <%= current_user.firstname + ' ' + current_user.lastname %>
+              <%= User.find(post.user_id).firstname + ' ' + User.find(post.user_id).lastname %>
             </div>
             <div class="text-sm font-normal text-secondarygray">
               <%= time_ago_in_words(post.created_at) %>
