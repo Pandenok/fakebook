@@ -19,6 +19,8 @@
     <% if flash[:alert] %>
       <p><%= alert %></p>
     <% end %>
+
+    <%= render 'layouts/navbar' %>
     
     <%= yield %>
   </body>
