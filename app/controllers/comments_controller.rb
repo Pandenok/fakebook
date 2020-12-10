@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   include CommentsHelper
 
+  before_action :authenticate_user!
+
   def create
     current_user.comments.create(post_id: params[:post_id], body: params[:comment][:body])
     flash[:notice] = "You commented on the post!"

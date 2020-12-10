@@ -1,4 +1,6 @@
 class FriendRequestsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @friend = User.find(params[:friend_id])
     @friend_request = current_user.friend_requests.build(friend_id: params[:friend_id])
