@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sent_to: 1
+  sent_by: 1
+  status: MyString
+  action: MyString
+  notifiable_id: 1
+  notifiable_type: MyString
+
+two:
+  sent_to: 1
+  sent_by: 1
+  status: MyString
+  action: MyString
+  notifiable_id: 1
+  notifiable_type: MyString
