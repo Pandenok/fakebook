@@ -22,4 +22,5 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications, foreign_key: :sent_to_id, dependent: :destroy
 end
