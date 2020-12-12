@@ -17,6 +17,9 @@
           <%= notification.action %> on your <%= notification.notifiable_type.downcase %>
         </div>
       <% end %>
+      <div class="text-xs font-semibold text-lblue">
+        <%= time_ago_in_words(notification.created_at) %> ago
+      </div>
     </div>
   <% end %>
 
@@ -42,6 +45,9 @@
           <%= notification.action %> your <%= notification.notifiable_type.downcase%>
         </div>
       <% end %>
+      <div class="text-xs font-semibold text-lblue">
+        <%= time_ago_in_words(notification.created_at) %> ago
+      </div>
     </div>
   </div>
   <%# end %>
