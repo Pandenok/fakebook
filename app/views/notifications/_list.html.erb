@@ -1,6 +1,6 @@
 <p class="mx-2 px-2 text-2xl text-black font-bold">Notifications</p>
-<% current_user.notifications.each do |notification| %>
-  <%= link_to post_path(id: notification.notifiable_id), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+<% current_user.notifications.unseen.recent.each do |notification| %>
+  <%= link_to post_path(id: notification.notifiable_id, notification_id: notification.id), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
     <div class="flex">
       <img class="object-cover w-14 h-14 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
     </div>
@@ -20,7 +20,7 @@
     </div>
   <% end %>
 
-  <%# link_to user_path(id: notification.sent_by.id), class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+  <%# link_to user_path(id: notification.sent_by.id, notification_id: notification.id), class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
   <div class="flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100">
     <div class="flex">
       <img class="object-cover w-14 h-14 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>

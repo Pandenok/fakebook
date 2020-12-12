@@ -9,7 +9,10 @@ class PostsController < ApplicationController
                  .order('created_at DESC')
   end
 
-  def show; end
+  def show
+    @notification = Notification.find(params[:notification_id])
+    @notification.seen!
+  end
 
   def new
     @post = current_user.posts.build
