@@ -1,0 +1,34 @@
+<div class="mb-4 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
+  <div class="px-4 pt-3 pb-2">
+    <div class="flex mb-3">
+      <div class="flex">
+        <img class="object-cover w-10 h-10 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+      </div>
+      <%= link_to new_post_path, class: "flex flex-1 rounded-3xl bg-gray-100 hover:bg-gray-200" do %>
+        <div class="text-base text-secondarygray pl-3 pt-2">
+          What's on your mind, <%= current_user.firstname %>?
+        </div>
+      <% end %>
+    </div>
+    <div class="flex border-t border-gray-300 pt-2 leading-8 text-secondarygray">
+      <button class="flex-1 hover:bg-gray-100 rounded-lg py-1">
+        <svg class="inline w-8 h-8 mb-1 text-newred fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span class="font-semibold">Live Video</span>
+      </button>
+      <button class="flex-1 hover:bg-gray-100 rounded-lg py-1">
+        <svg class="inline w-8 h-8 mb-1 text-lgreen fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span class="font-semibold">Photo/Video</span>
+      </button>
+      <button class="flex-1 hover:bg-gray-100 rounded-lg py-1">
+        <svg class="inline w-8 h-8 mb-1 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z" clip-rule="evenodd" />
+        </svg>
+        <span class="font-semibold">Feeling/Activity</span>
+      </button>
+    </div>
+  </div>
+</div>
