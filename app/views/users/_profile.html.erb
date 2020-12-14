@@ -1,0 +1,106 @@
+<!-- Header -->
+<div class="w-full h-3/5 bg-white border-b border-gray-200 shadow">
+  <div class="relative w-1/2 h-2/3 bg-gradient-to-t from-gray-400 m-auto rounded-lg">
+    <button class="absolute bottom-4 right-8 px-3 py-1.5 bg-white text-base text-black font-semibold rounded-lg">
+      <svg class="inline w-5 h-5 mb-1 mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+        <g><g><path d="M500,402c-81.2,0-147,65.9-147,147s65.8,147,147,147c81.1,0,147-65.9,147-147S581.1,402,500,402L500,402z M892,255H774.4c-16.2,0-33.6-12.5-38.7-27.9l-30.4-91.2c-5.1-15.3-22.5-27.9-38.7-27.9H333.4c-16.2,0-33.6,12.5-38.7,27.8l-30.5,91.2c-5.1,15.4-22.5,27.9-38.7,27.9H108c-53.9,0-98,44.1-98,98v441c0,53.9,44.1,98,98,98h784c53.9,0,98-44.1,98-98V353C990,299.1,945.9,255,892,255z M500,794c-135.3,0-245-109.7-245-245s109.7-245,245-245c135.3,0,245,109.7,245,245S635.3,794,500,794z M867.5,411.8c-19,0-34.3-15.4-34.3-34.3c0-18.9,15.3-34.3,34.3-34.3s34.3,15.4,34.3,34.3C901.8,396.4,886.5,411.8,867.5,411.8z"/></g></g>
+      </svg>
+      <span>Add Cover Photo</span>
+    </button>
+    <img class="absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+  </div>
+  <div class="w-1/2 px-4 m-auto">
+    <p class="mt-8 text-center text-4xl font-bold">
+      <%= current_user.firstname + ' ' + current_user.lastname %>
+    </p>
+    <p class="mx-4 mt-3 pb-2 text-center text-base text-lblue font-semibold hover:underline border-b border-gray-300">
+      Add Bio
+    </p>
+  </div>
+  <!-- Profile Navbar -->
+  <div class="flex w-1/2 mt-1.5 px-4 m-auto">
+    <div class="flex w-1/2 ml-4 mr-10 text-center">
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+        Posts
+      </div>
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+        About
+      </div>
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+        Friends
+        <span class="font-normal">
+          150
+        </span>
+      </div>
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+        Photos
+      </div>
+    </div>
+    <div class="flex w-1/2 mr-4 py-3 justify-end">
+      <button class="px-3 bg-gray-200 text-black font-bold rounded-lg">
+        <svg class="inline w-5 h-5 mb-1 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+        </svg>
+        <span>Edit Profile</span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Main Section -->
+<div class="w-full bg-lgray">
+  <div class="flex w-1/2 mt-4 px-8 m-auto">
+    <div class="flex flex-col w-2/5">
+      <!-- Intro Card -->
+      <div class="flex flex-col w-full mb-4 px-4 py-2 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
+        <div class="text-xl font-semibold">
+          Intro
+        </div>
+        <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
+          <span class="text-sm">Edit Details</span>
+        </button>
+        <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
+          <span class="text-sm">Add Hobbies</span>
+        </button>
+      </div>
+      <!-- Photo Card -->
+      <div class="flex flex-col w-full mb-4 px-4 py-2 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
+        <div class="text-xl font-semibold">
+          Photos
+        </div>
+        <div class="grid grid-cols-3 gap-4 my-3">
+          <div class="border">1</div>
+          <div class="border">2</div>
+          <div class="border">3</div>
+          <div class="border">4</div>
+          <div class="border">5</div>
+          <div class="border">6</div>
+          <div class="border">7</div>
+          <div class="border">8</div>
+          <div class="border">9</div>
+        </div>
+      </div>
+      <!-- Friends Card -->
+      <div class="flex flex-col w-full mb-4 px-4 py-2 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
+        <div class="text-xl font-semibold">
+          Friends
+        </div>
+        <div class="grid grid-cols-3 gap-4 my-3">
+          <div class="border">1</div>
+          <div class="border">2</div>
+          <div class="border">3</div>
+          <div class="border">4</div>
+          <div class="border">5</div>
+          <div class="border">6</div>
+          <div class="border">7</div>
+          <div class="border">8</div>
+          <div class="border">9</div>
+        </div>
+      </div>
+    </div>
+    <!-- News Feed -->
+    <div class="ml-auto w-7/12">
+      <%= render partial: 'posts/whats_on_your_mind_card' %>
+      <%= render partial: 'posts/news_feed' %>
+    </div>
+  </div>
+</div>
