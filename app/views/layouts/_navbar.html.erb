@@ -1,5 +1,5 @@
 <header class="bg-teal-400">
-  <nav class="fixed flex justify-center w-full h-14 text-white bg-white shadow">
+  <nav class="fixed flex z-10 justify-center w-full h-14 text-white bg-white shadow">
     
     <div class="flex w-1/6 mr-auto py-2 items-center">
       <%= link_to root_path do %>
@@ -57,12 +57,12 @@
 
     <div class="flex w-1/6 ml-auto justify-end items-center">
       <!-- User avatar and name -->
-      <div class="mr-2 px-3">
+      <%= link_to user_path(current_user), class: "mr-2 pl-0.5 pr-2 py-0.5 rounded-full text-black font-semibold focus:text-lblue focus:bg-blue-100 focus:text-lblue hover:bg-lgray" do %>
         <img class="inline object-cover w-8 h-8 mr-1.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
-        <span class="text-black font-semibold">
+        <span class="">
           <%= current_user.firstname %>
         </span>
-      </div>
+      <% end %>
       <!-- Plus button -->
       <div class="dropdown inline-block relative">
         <button class="py-2 px-2 mr-2 rounded-full text-black bg-gray-200 hover:bg-gray-300 hover:text-lblue">
@@ -95,7 +95,7 @@
       <div class="dropdown inline-block relative">
         <button class="inline flex w-10 h-10 mr-2 justify-center content-center text-black bg-gray-200 hover:bg-gray-300 hover:text-lblue rounded-full">
           <span class="flex relative inline-block">
-            <svg class="self-center w-5 h-5 fill-current" viewBox="0 0 28 28" height="20" width="20">
+            <svg class="mt-2 w-5 h-5 fill-current" viewBox="0 0 28 28" height="20" width="20">
               <path d="M7.847 23.488C9.207 23.488 11.443 23.363 14.467 22.806 13.944 24.228 12.581 25.247 10.98 25.247 9.649 25.247 8.483 24.542 7.825 23.488L7.847 23.488ZM24.923 15.73C25.17 17.002 24.278 18.127 22.27 19.076 21.17 19.595 18.724 20.583 14.684 21.369 11.568 21.974 9.285 22.113 7.848 22.113 7.421 22.113 7.068 22.101 6.79 22.085 4.574 21.958 3.324 21.248 3.077 19.976 2.702 18.049 3.295 17.305 4.278 16.073L4.537 15.748C5.2 14.907 5.459 14.081 5.035 11.902 4.086 7.022 6.284 3.687 11.064 2.753 15.846 1.83 19.134 4.096 20.083 8.977 20.506 11.156 21.056 11.824 21.986 12.355L21.986 12.356 22.348 12.561C23.72 13.335 24.548 13.802 24.923 15.73Z"></path>
             </svg>
             <% if current_user.notifications.unseen.any? %>
@@ -118,8 +118,7 @@
         </button>
         <!-- Avatar -->
         <div class="dropdown-menu hidden fixed right-0 w-1/5 py-2 bg-white rounded-lg border shadow-xl">
-          <%# link_to new_post_path, class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
-          <div class="flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100">
+          <%= link_to user_path(current_user), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
             <div class="flex">
               <img class="object-cover w-16 h-16 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
             </div>
@@ -131,8 +130,7 @@
                 See your profile
               </div>
             </div>
-          </div>
-          <%# end %>
+          <% end %>
           <hr class="mx-4 my-2 text-secondarygray">
           <!-- Logout -->
           <%= link_to destroy_user_session_path, method: :delete, class: "flex block mx-2 px-2 rounded-md hover:bg-gray-100" do %>
