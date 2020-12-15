@@ -4,11 +4,15 @@
     <% lastname = User.find(comment.user_id).lastname %>
     <% full_name = firstname + ' ' + lastname %>
     <div class="flex w-full mt-2.5">
-      <img class="inline object-cover w-8 h-8 mr-2.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+      <%= link_to user_path(comment.user_id) do %>
+        <img class="inline object-cover w-8 h-8 mr-2.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+      <% end %>
       <div class="w-max px-3 py-2 rounded-2xl bg-gray-100">
-        <div class="text-sm font-semibold">
-          <%= full_name %>
-        </div>
+        <%= link_to user_path(comment.user_id) do %>
+          <div class="text-sm font-semibold">
+            <%= full_name %>
+          </div>
+        <% end %>
         <div class="text-base">
           <%= comment.body %>
         </div>
