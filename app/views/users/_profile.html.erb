@@ -1,14 +1,16 @@
 <!-- Header -->
 <div class="w-full h-3/5 bg-white border-b border-gray-200 shadow">
+
   <div class="relative w-1/2 h-2/3 bg-gradient-to-t from-gray-400 m-auto rounded-lg">
-    <button class="absolute bottom-4 right-8 px-3 py-1.5 bg-white text-base text-black font-semibold rounded-lg">
-      <svg class="inline w-5 h-5 mb-1 mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-        <g><g><path d="M500,402c-81.2,0-147,65.9-147,147s65.8,147,147,147c81.1,0,147-65.9,147-147S581.1,402,500,402L500,402z M892,255H774.4c-16.2,0-33.6-12.5-38.7-27.9l-30.4-91.2c-5.1-15.3-22.5-27.9-38.7-27.9H333.4c-16.2,0-33.6,12.5-38.7,27.8l-30.5,91.2c-5.1,15.4-22.5,27.9-38.7,27.9H108c-53.9,0-98,44.1-98,98v441c0,53.9,44.1,98,98,98h784c53.9,0,98-44.1,98-98V353C990,299.1,945.9,255,892,255z M500,794c-135.3,0-245-109.7-245-245s109.7-245,245-245c135.3,0,245,109.7,245,245S635.3,794,500,794z M867.5,411.8c-19,0-34.3-15.4-34.3-34.3c0-18.9,15.3-34.3,34.3-34.3s34.3,15.4,34.3,34.3C901.8,396.4,886.5,411.8,867.5,411.8z"/></g></g>
-      </svg>
-      <span>Add Cover Photo</span>
-    </button>
+    <% if @user.cover_photo.attached? %>
+      <%= image_tag @user.cover_photo, class: "object-cover w-full h-full rounded-lg" %>
+    <% end %>
+    <div class="absolute bottom-4 right-8 px-3 py-1.5 bg-white text-base text-black font-semibold rounded-lg cursor-pointer hover:bg-gray-200">
+      <%= render 'edit_cover_photo' %>
+    </div>
     <img class="absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
   </div>
+
   <div class="w-1/2 px-4 m-auto">
     <p class="mt-8 text-center text-4xl font-bold">
       <%= @user.firstname + ' ' + @user.lastname %>
