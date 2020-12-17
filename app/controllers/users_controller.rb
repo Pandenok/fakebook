@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  include UsersHelper
+  before_action :set_user, only: [:show, :edit, :update]
+
   def index
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.order('created_at DESC')
   end
 
@@ -11,5 +13,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      flash[:notice] = 'Profile successfully updated'
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = 'Something went wrong...'
+    end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
