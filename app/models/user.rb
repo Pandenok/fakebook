@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  enum gender: { Male: 'Male', Female: 'Female', Custom: 'Custom' }
+  enum gender: { male: 'Male', female: 'Female', custom: 'Custom' }
   has_many :accepted_friend_requests,
     ->(user) { unscope(where: :user_id) 
               .where("user_id = ? OR friend_id = ?", user.id, user.id)
