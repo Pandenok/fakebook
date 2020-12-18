@@ -1,0 +1,12 @@
+<%= simple_form_for @user do |f| %>
+  <label class="cursor-pointer">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, class: "absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" %>
+    <% else %>
+      <img class="absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+    <% end %>
+    <span class="hidden">
+      <%= f.file_field :avatar, onchange: "form.submit()" %>
+    </span>
+  </label>
+<% end %>
