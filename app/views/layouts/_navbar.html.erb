@@ -58,7 +58,8 @@
     <div class="flex w-1/6 ml-auto justify-end items-center">
       <!-- User avatar and name -->
       <%= link_to user_path(current_user), class: "mr-2 pl-0.5 pr-2 py-0.5 rounded-full text-black font-semibold focus:text-lblue focus:bg-blue-100 focus:text-lblue hover:bg-lgray" do %>
-        <img class="inline object-cover w-8 h-8 mr-1.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+        <%= image_tag avatar_for(current_user, 32), class: "inline object-cover w-8 h-8 mr-1.5 border rounded-full" %>
+        <%# <img class="inline object-cover w-8 h-8 mr-1.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/> %>
         <span class="">
           <%= current_user.firstname %>
         </span>
@@ -120,7 +121,8 @@
         <div class="dropdown-menu hidden fixed right-0 w-1/5 py-2 bg-white rounded-lg border shadow-xl">
           <%= link_to user_path(current_user), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
             <div class="flex">
-              <img class="object-cover w-16 h-16 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+              <%= image_tag avatar_for(current_user, 64), class: "inline object-cover w-16 h-16 mr-2.5 border rounded-full" %>
+              <%# <img class="object-cover w-16 h-16 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/> %>
             </div>
             <div class="flex flex-1 flex-col justify-center">
               <div class="text-base text-black font-semibold">
