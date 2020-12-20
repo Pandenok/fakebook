@@ -5,6 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   enum gender: { male: 'Male', female: 'Female', custom: 'Custom' }
+  
+  has_many :friend_requests,
+      ->(user) { unscope(where: :user_id)
+              .where("user_id = ? OR friend_id = ?", user.id, user.id)
+              .pending },
+    inverse_of: :user,
+    class_name: "FriendRequest",
+    dependent: :destroy
+
   has_many :accepted_friend_requests,
     ->(user) { unscope(where: :user_id) 
               .where("user_id = ? OR friend_id = ?", user.id, user.id)
