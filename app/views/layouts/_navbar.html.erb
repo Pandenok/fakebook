@@ -17,15 +17,15 @@
     
     <div class="flex sm:w-1/3">
       <!-- Home button -->
-      <%= link_to root_path, class: "flex-1 h-full text-secondarygray border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg" do %>
-        <svg class="block m-auto h-full w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+      <%= link_to root_path, class: "flex-1 inline-flex items-center justify-center text-secondarygray border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg" do %>
+        <svg class="w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
           <path stroke-width="1.5" d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
         </svg>
       <% end %>
       <!-- Friends button -->
-      <%= link_to users_path, class: "flex-1 h-full text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg" do %>
-        <span class="relative">
-          <svg class="block m-auto h-full w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <%= link_to users_path, class: "flex-1 inline-flex items-center justify-center text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg" do %>
+        <span class="relative inline-block">
+          <svg class="w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
           <% if current_user.notifications.where(notifiable_type: "FriendRequest").unseen.any? %>
