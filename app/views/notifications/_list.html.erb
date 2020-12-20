@@ -1,56 +1,39 @@
 <p class="mx-2 px-2 text-2xl text-black font-bold">Notifications</p>
 <% current_user.notifications.unseen.recent.each do |notification| %>
-  <%= link_to post_path(id: notification.notifiable_id, notification_id: notification.id), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
-    <div class="flex">
-      <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
-      <%# <img class="object-cover w-14 h-14 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/> %>
-    </div>
-    <div class="flex flex-1 flex-col justify-center">
-      <div class="text-base text-black font-semibold">
-        <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
+  <% if notification.action == "liked" || notification.action == "commented" %>
+    <%= link_to post_path(id: notification.notifiable_id, notification_id: notification.id), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+      <div class="flex">
+        <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
       </div>
-      <% if notification.action == "liked" %>
+      <div class="flex flex-1 flex-col justify-center">
+        <div class="text-base text-black font-semibold">
+          <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
+        </div>
         <div class="text-sm font-normal text-secondarygray">
           <%= notification.action %> your <%= notification.notifiable_type.downcase %>
         </div>
-      <% elsif notification.action == "commented" %>
-        <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> on your <%= notification.notifiable_type.downcase %>
+        <div class="text-xs font-semibold text-lblue">
+          <%= time_ago_in_words(notification.created_at) %> ago
         </div>
-      <% end %>
-      <div class="text-xs font-semibold text-lblue">
-        <%= time_ago_in_words(notification.created_at) %> ago
       </div>
-    </div>
+    <% end %> 
+  <% end %> 
+  <% if notification.action == "sent" || notification.action == "accepted" || notification.action == "rejected" %>
+    <%= link_to user_path(id: notification.sent_by, notification_id: notification.id), class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+      <div class="flex">
+        <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
+      </div>
+      <div class="flex flex-1 flex-col justify-center">
+        <div class="text-base text-black font-semibold">
+          <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
+        </div>
+        <div class="text-sm font-normal text-secondarygray">
+          <%= notification.action %> you a <%= notification.notifiable_type.underscore.humanize.downcase%>
+        </div>
+        <div class="text-xs font-semibold text-lblue">
+          <%= time_ago_in_words(notification.created_at) %> ago
+        </div>
+      </div>
+    <% end %>
   <% end %>
-
-  <%# link_to user_path(id: notification.sent_by.id, notification_id: notification.id), class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
-  <div class="flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100">
-    <div class="flex">
-      <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
-      <%# <img class="object-cover w-14 h-14 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/> %>
-    </div>
-    <div class="flex flex-1 flex-col justify-center">
-      <div class="text-base text-black font-semibold">
-        <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
-      </div>
-      <% if notification.action == "sent" %>
-        <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> you a <%= notification.notifiable_type.downcase%>
-        </div>
-      <% elsif notification.action == "accepted" %>
-        <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> your <%= notification.notifiable_type.downcase%>
-        </div>
-      <% elsif notification.action == "rejected" %>
-        <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> your <%= notification.notifiable_type.downcase%>
-        </div>
-      <% end %>
-      <div class="text-xs font-semibold text-lblue">
-        <%= time_ago_in_words(notification.created_at) %> ago
-      </div>
-    </div>
-  </div>
-  <%# end %>
 <% end %>
