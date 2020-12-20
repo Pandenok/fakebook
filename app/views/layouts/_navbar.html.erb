@@ -17,15 +17,15 @@
     
     <div class="flex sm:w-1/3">
       <!-- Home button -->
-      <button class="flex-1 text-secondarygray border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
-        <svg class="inline w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+      <%= link_to root_path, class: "flex-1 h-full text-secondarygray border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg" do %>
+        <svg class="block m-auto h-full w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
           <path stroke-width="1.5" d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
         </svg>
-      </button>
+      <% end %>
       <!-- Friends button -->
-      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg">
-        <span class="relative inline-block">
-          <svg class="inline w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <%= link_to users_path, class: "flex-1 h-full text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg" do %>
+        <span class="relative">
+          <svg class="block m-auto h-full w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
           <% if current_user.notifications.where(notifiable_type: "FriendRequest").unseen.any? %>
@@ -34,21 +34,21 @@
             </span>
           <% end %>
         </span>
-      </button>
+      <% end %>
       <!-- Watch button -->
-      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg">
-      <svg class="inline w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-        <g><path d="M990,66.5c0-22.9-18.6-41.5-41.5-41.5H51.4C28.5,25,10,43.6,10,66.5l0,697.6c0,22.9,30.1,52.8,53,52.8H937c22.9,0,53-29.8,53-52.8L990,66.5z M910.5,737.7H89.5V104.2h821.1L910.5,737.7L910.5,737.7z M274.8,975h503v-79.1h-503V975z M354.4,262.6v343.1l344.2-171.5L354.4,262.6z"/></g>
-      </svg>
+      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
+        <svg class="inline w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+          <g><path d="M990,66.5c0-22.9-18.6-41.5-41.5-41.5H51.4C28.5,25,10,43.6,10,66.5l0,697.6c0,22.9,30.1,52.8,53,52.8H937c22.9,0,53-29.8,53-52.8L990,66.5z M910.5,737.7H89.5V104.2h821.1L910.5,737.7L910.5,737.7z M274.8,975h503v-79.1h-503V975z M354.4,262.6v343.1l344.2-171.5L354.4,262.6z"/></g>
+        </svg>
       </button>
       <!-- Marketplace button -->
-      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg">
+      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
         <svg class="inline w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
           <g><path d="M971.6,353l-91.9-122.4c-3.6-4.8-7.8-9-12.2-13V71.2c0-33.8-27.4-61.2-61.3-61.2H193.8c-33.8,0-61.3,27.4-61.3,61.2v146.4c-4.4,4-8.7,8.1-12.2,12.9L28.4,353C16.5,368.8,10,388.3,10,408.1v30.6c0,50.7,41.2,91.9,91.9,91.9l0,0v398.1c0,33.8,27.4,61.2,61.2,61.2h673.7c33.8,0,61.3-27.4,61.3-61.2V530.6l0,0c50.7,0,91.9-41.2,91.9-91.9v-30.6C990,388.3,983.5,368.8,971.6,353L971.6,353z M806.3,71.2v122.5H193.8l0,0V71.2H806.3L806.3,71.2z M322.2,469.4H193.9L316.4,255h67L322.2,469.4L322.2,469.4z M415.3,255h69.4v214.4H354L415.3,255L415.3,255z M515.3,255h69.4L646,469.4H515.3V255L515.3,255z M616.5,255h67l122.5,214.4H677.8L616.5,255L616.5,255z M71.2,438.7v-30.6c0-6.6,2.1-13.1,6.1-18.4l91.9-122.5c5.8-7.7,14.9-12.2,24.5-12.2h87.3L158.6,469.4h-56.7C85,469.4,71.2,455.7,71.2,438.7L71.2,438.7z M622.5,928.8H392.8V622.5h229.7V928.8L622.5,928.8z M836.9,928.8H653.1V622.5c0-16.9-13.8-30.6-30.6-30.6H392.8c-16.9,0-30.6,13.7-30.6,30.6v306.3H163.1V530.6h673.7V928.8L836.9,928.8z M928.8,438.7c0,16.9-13.7,30.6-30.6,30.6h-56.8L718.8,255h87.4l0,0c9.6,0,18.7,4.5,24.5,12.2l91.9,122.5c4,5.3,6.2,11.7,6.2,18.4V438.7L928.8,438.7z"/></g>
         </svg>
       </button>
       <!-- Groups button -->
-      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg">
+      <button class="flex-1 text-secondarygray border-white focus:text-lblue border-b-4 focus:border-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
         <svg class="inline w-7 h-7 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
           <path stroke-width="1.5" d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
         </svg>
