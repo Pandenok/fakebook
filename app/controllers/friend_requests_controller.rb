@@ -3,16 +3,15 @@ class FriendRequestsController < ApplicationController
 
   def create
     @friend = User.find(params[:friend_id])
-    @friend_request = current_user.friend_requests.build(friend_id: params[:friend_id])
+    @friend_request = current_user.friend_requests.build(friend_id: @friend.id)
     if @friend_request.save
       @friend_request.pending!
       Notification.create(sent_to: @friend, sent_by: current_user, action: "sent", notifiable: @friend_request)
       flash[:notice] = "Friend request sent!"
-      # redirect_to root
     else
       flash[:alert] = "Ooops! Something went wrong!"
     end
-    redirect_to root
+    redirect_to users_path
   end
 
   def update
@@ -35,6 +34,6 @@ class FriendRequestsController < ApplicationController
       Notification.create(sent_to: @requestor, sent_by: current_user, action: "rejected", notifiable: @received_friend_request)
       flash[:notice] = "Friend request rejected!"
     end
-    # redirect_to root
+    redirect_to users_path
   end
 end
