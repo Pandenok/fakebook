@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
+    @users = User.where.not(id: [current_user.id,
+                                 current_user.friends.pluck(:id),
+                                 current_user.friend_requests.pluck(:user_id, :friend_id)]
+                                 .flatten)
+                                #  current_user.received_friend_requests.pluck(:user_id)]
   end
 
   def show
