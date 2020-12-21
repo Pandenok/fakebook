@@ -5,4 +5,5 @@ class Notification < ApplicationRecord
   enum status: { seen: 'Seen', unseen: 'Unseen' }
   scope :unseen, -> { where(status: :unseen) }
   scope :recent, -> { order(created_at: :desc) }
+  scope :incoming_friend_request, -> { where(action: "sent") }
 end
