@@ -15,11 +15,12 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
-    @friend_request = FriendRequest.find_by_friend_id(current_user.id)
+    @friend_request = FriendRequest.find(params[:id])
     @requestor = User.find(@friend_request.user_id)
     @friend_request.accepted! if @friend_request.pending?
     Notification.create(sent_to: @requestor, sent_by: current_user, action: "accepted", notifiable: @friend_request)
     flash[:notice] = "Friend request accepted!"
+    redirect_to users_path
   end
 
   def destroy
