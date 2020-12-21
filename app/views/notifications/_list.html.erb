@@ -27,9 +27,15 @@
         <div class="text-base text-black font-semibold">
           <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
         </div>
-        <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> you a <%= notification.notifiable_type.underscore.humanize.downcase%>
-        </div>
+          <div class="text-sm font-normal text-secondarygray">
+            <%= notification.action %>
+              <% if notification.action == 'sent' %>
+                you a 
+              <% else %>
+                your
+              <% end %>
+            <%= notification.notifiable_type.underscore.humanize.downcase%>
+          </div>
         <div class="text-xs font-semibold text-lblue">
           <%= time_ago_in_words(notification.created_at) %> ago
         </div>
