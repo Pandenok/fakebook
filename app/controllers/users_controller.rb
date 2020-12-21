@@ -7,11 +7,17 @@ class UsersController < ApplicationController
                                  current_user.friends.pluck(:id),
                                  current_user.friend_requests.pluck(:user_id, :friend_id)]
                                  .flatten)
-                                #  current_user.received_friend_requests.pluck(:user_id)]
+    current_user.notifications.unseen
+                              .where(action: "sent")
+                              .each { |notification| notification.seen! }
   end
 
   def show
     @posts = @user.posts.order('created_at DESC')
+    current_user.notifications.unseen
+                              .where(notifiable_type: "FriendRequest")
+                              .where(sent_by_id: @user.id)
+                              .each { |notification| notification.seen! }
   end
 
   def edit
