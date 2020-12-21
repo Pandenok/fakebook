@@ -1,0 +1,36 @@
+<h2 class="mx-2 px-2 text-lg font-semibold">
+  <%= pluralize(current_user.friend_requests.where.not(user_id: current_user.id).count, "Friend Request") %>
+</h2>
+<% current_user.friend_requests.where.not(user_id: current_user.id).each do |request| %>
+  <div class="mx-2 px-2 py-2 rounded-lg hover:bg-lgray">
+    <div class="flex">
+      <%= link_to user_path(User.find(request.user_id)) do %>
+        <div class="flex">
+          <%= image_tag avatar_for(User.find(request.user_id), 56), class: "inline object-cover w-14 h-14 mr-3 border rounded-full" %>
+        </div>
+        <div class="flex flex-1 flex-col">
+          <div class="flex items-center mb-1">
+            <div class="text-base font-semibold">
+              <!-- Add helper in User.rb name full_name -->
+              <%= User.find(request.user_id).firstname + ' ' + User.find(request.user_id).lastname %>
+            </div>
+            <div class="ml-auto text-xs font-light text-secondarygray">
+              <%= time_ago_in_words(request.created_at) %>
+            </div>
+          </div>
+          <div class="mb-1 text-xs font-normal text-secondarygray">
+            <% if current_user.mutual_friends_with(User.find(request.user_id)).any? %>
+              <%= render partial: 'mutual_friends_list', locals: { user: User.find(request.user_id) } %>
+            <% else %>
+              No mutual friends
+            <% end %>
+          </div>
+          <div class="flex -ml-2 pt-1.5 space-x-2">
+            <%= link_to "Confirm", friend_request_path(request), method: :patch, class: "flex-1 py-2 bg-lblue text-white text-sm text-center font-semibold rounded-md" %>
+            <%= link_to "Delete", friend_request_path(request), method: :delete, class: "flex-1 py-2 bg-gray-200 text-sm text-center font-semibold rounded-md hover:bg-gray-300" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
