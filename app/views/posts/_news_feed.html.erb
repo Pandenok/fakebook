@@ -55,8 +55,7 @@
           <% end %>
           <% if post.comments.any? %>
             <div class="flex ml-auto text-sm">
-              <%= post.comments.count %> 
-              <%= post.comments.count == 1 ? "Comment" : "Comments" %>
+              <%= pluralize(post.comments.count, "Comment") %>
             </div>
           <% end %>
         </div>
