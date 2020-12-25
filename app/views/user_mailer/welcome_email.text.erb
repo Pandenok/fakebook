@@ -1,0 +1,21 @@
+
+Welcome to Fakebook
+===============================================
+
+Hi <%= @user.firstname %>,
+
+Your account has been created - now it will be easier than ever to share and connect with your fake friends and fake family.
+
+For getting started please visit the following URL:
+
+<%= user_url(@user, host: 'localhost:3000', controller: 'user', action: 'show') %>
+
+Thanks,
+The Fakebook Team
+
+===============================================
+
+
+
+This message was sent to <%= @user.email %>. If you don't want to receive these emails from Fakebook in future you're doomed.
+Fakebook, Inc., Attention: Community Support, 1 Hacker Way, Menlo Park, CA 94025
