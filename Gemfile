@@ -64,6 +64,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Provides a better error page for Rails and other Rack apps.
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  # When mail is sent from your application, Letter Opener will open a preview in the browser instead of sending.
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test do

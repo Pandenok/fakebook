@@ -1,14 +1,7 @@
 <div style="width: 40%">
    <%= link_to posts_url(host: 'localhost:3000', controller: 'post', action: 'index'), style: "display: flex; align-items: center; margin: 10px 0 0px 10px; text-decoration: none" do %>
-    <img width="150" heigth="150" src="/img/fakebook_logo_transparent.png" alt="Fakebook logo"/>
+    <%= image_tag attachments['fakebook_logo_transparent.png'].url, style: "widht:100px; height:100px", alt: "Fakebook logo" %>
   <% end %>
-
-  <%# link_to posts_url(host: 'localhost:3000', controller: 'post', action: 'index'), style: "display: flex; align-items: center; margin: 20px 0 10px 10px; text-decoration: none" do %>
-    <%# <img width="40" heigth="40" style="margin-right: 10px" src="/img/fb_logo.webp" alt="Fakebook logo"/> %>
-    <%# <span style="color: #4d6499; padding-left: 10px;"> %>
-      <%# Fakebook %>
-    <%# </span> %>
-  <%# end %>
 
   <hr style="margin: 10px 10px; border-color: #F5F5F5"/>
 
