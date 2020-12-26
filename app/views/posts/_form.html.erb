@@ -1,6 +1,5 @@
 <div class="pb-4">
-  <!-- change to user avatar -->
-  <img class="inline object-cover w-10 h-10 mr-2.5 rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
+  <%= image_tag avatar_for(current_user, 40), class: "inline object-cover w-10 h-10 mr-2.5 border rounded-full" %>
   <div class="inline text-base font-semibold">
     <%= current_user.firstname + ' ' + current_user.lastname %>
   </div>
