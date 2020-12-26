@@ -1,4 +1,5 @@
 <div class="pb-4">
+  <!-- change to user avatar -->
   <img class="inline object-cover w-10 h-10 mr-2.5 rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
   <div class="inline text-base font-semibold">
     <%= current_user.firstname + ' ' + current_user.lastname %>
@@ -14,7 +15,17 @@
                 input_html: { placeholder: "What's on your mind, #{current_user.firstname}?",
                               rows: 5,
                               class: 'w-full text-2xl bg-white resize-none overflow-y-auto' } %>
-    <%= f.button :submit, f.object.new_record? ? "Post" : "Save", class: "flex w-full items-center justify-center focus:outline-none text-white text-sm font-semibold bg-lblue hover:bg-bluehover rounded-md py-2 transition duration-150 ease-in" %>
+
+    <label class="flex w-full px-3 py-3 mb-3 items-center justify-between border border-gray-300 rounded-lg font-semibold text-sm cursor-pointer shadow">
+      Add to Your Post
+      <svg class="w-8 h-8 text-lgreen fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span class="hidden">
+        <%= f.file_field :images, multiple: true %>
+      </span>
+    </label>                              
+    <%= f.button :submit, f.object.new_record? ? "Post" : "Save", class: "flex w-full items-center justify-center focus:outline-none text-white text-sm font-semibold bg-lblue hover:bg-bluehover rounded-md py-2.5 transition duration-150 ease-in" %>
   <% end %>
 </div>
 
