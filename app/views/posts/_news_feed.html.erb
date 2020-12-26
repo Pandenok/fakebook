@@ -46,6 +46,10 @@
         <%= post.body %>
       </p>
 
+      <% if post.images.attached? %>
+        <%= render partial: 'posts/images', locals: { post: post } %>
+      <% end %>
+
       <% if post.likes.any? || post.comments.any? %>
         <div class="flex space-between items-center mb-2 text-secondarygray">
           <% if post.likes.any? %>

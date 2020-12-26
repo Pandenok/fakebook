@@ -3,6 +3,7 @@
     <div class="px-4 py-2">
       <div class="flex">
         <div class="flex">
+          <!-- change to user.avatar -->
           <img class="object-cover w-10 h-10 mr-2.5 rounded-full border" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/>
         </div>
         <div class="flex flex-1 flex-col">
@@ -40,6 +41,10 @@
       <p class="leading-normal pt-1 mb-2">
         <%= @post.body %>
       </p>
+
+      <% if @post.images.attached? %>
+        <%= render partial: 'posts/images', locals: { post: @post } %>
+      <% end %>
 
       <% if @post.likes.any? || @post.comments.any? %>
         <div class="flex space-between items-center mb-2 text-secondarygray">
