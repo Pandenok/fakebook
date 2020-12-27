@@ -43,6 +43,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:image_id])
+    @image.purge
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def set_post
