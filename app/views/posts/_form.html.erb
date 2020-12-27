@@ -1,5 +1,7 @@
 <div class="pb-4">
-  <%= image_tag avatar_for(current_user, 40), class: "inline object-cover w-10 h-10 mr-2.5 border rounded-full" %>
+  <%= link_to user_path(current_user) do %>
+    <%= image_tag avatar_for(current_user, 40), class: "inline object-cover w-10 h-10 mr-2.5 border rounded-full" %>
+  <% end %>
   <div class="inline text-base font-semibold">
     <%= current_user.firstname + ' ' + current_user.lastname %>
   </div>
