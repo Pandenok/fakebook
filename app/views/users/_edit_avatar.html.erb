@@ -1,8 +1,0 @@
-<%= simple_form_for @user do |f| %>
-  <label class="cursor-pointer">
-    <%= image_tag avatar_for(current_user, 176), class: "absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" %>
-    <span class="hidden">
-      <%= f.file_field :avatar, onchange: "form.submit()" %>
-    </span>
-  </label>
-<% end %>
