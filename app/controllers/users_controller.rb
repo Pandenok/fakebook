@@ -20,15 +20,18 @@ class UsersController < ApplicationController
                               .each { |notification| notification.seen! }
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    if @user.update(user_params)
+    @user.update(user_params)
+    @posts = @user.posts.order('created_at DESC')
+
+    if @user.save
       flash[:notice] = 'Profile successfully updated'
       redirect_to user_path(@user)
     else
       flash[:alert] = 'Something went wrong...'
+      render template: 'users/show'
     end
   end
 

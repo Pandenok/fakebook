@@ -2,8 +2,10 @@ class BlobValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, values)
     return unless values.attached?
 
-    if Array(values).size > options[:limit_range].max
-      record.errors.add(attribute, :max_limit_error)
+    if options[:limit_range].present?
+      if Array(values).size > options[:limit_range].max
+        record.errors.add(attribute, :max_limit_error)
+      end
     end
 
     Array(values).each do |value|

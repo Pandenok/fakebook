@@ -37,6 +37,8 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :sent_to_id, dependent: :destroy
   has_one_attached :cover_photo
   has_one_attached :avatar
+  
+  validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
 
   def mutual_friends_with(user)
     self.friends.where(users: {id: user.friends.pluck(:id)})
