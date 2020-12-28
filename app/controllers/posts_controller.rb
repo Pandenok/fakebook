@@ -27,14 +27,19 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:alert] = "Something went wrong..."
-      # redirect_to posts_path
+      render :new
     end
   end
 
   def update
     @post.update(post_params)
-    flash[:notice] = "Post successfully updated!"
-    redirect_to posts_path
+    if @post.save
+      flash[:notice] = "Post successfully updated!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Something went wrong..."
+      render :edit
+    end
   end
 
   def destroy

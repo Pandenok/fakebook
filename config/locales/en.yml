@@ -30,6 +30,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  # Used for Active Storage Blob Validator
+  activerecord:
+    errors:
+      messages:
+        content_type: "must be JPG or PNG"
+        max_size_error: "must be less than or equal to %{max_size}"
+        max_limit_error: "max number of uploads is exceeded: 1 to 5"
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
     distance_in_words:
