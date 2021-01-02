@@ -1,1 +1,1 @@
-$("#profile-section").html("<%= j render "profile" %>");
+$("#profile-section").html("<%= j render "profile", locals: { user: @user } %>");

@@ -41,12 +41,30 @@
       </div>
     </div>
     <div class="flex w-1/2 mr-4 py-3 justify-end">
-      <button class="px-3 bg-gray-200 text-black font-bold rounded-lg">
-        <svg class="inline w-5 h-5 mb-1 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-        </svg>
-        <span>Edit Profile</span>
-      </button>
+      <% if @user == current_user %>
+        <button class="px-3 bg-gray-200 text-black font-bold rounded-lg">
+          <svg class="inline w-5 h-5 mb-1 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+          </svg>
+          <span>Edit Profile</span>
+        </button>
+      <% else %>
+        <% if current_user.friend_requests.where(user_id: @user.id, friend_id: current_user.id, status: 'pending').any? %>
+          <%= link_to friend_requests_path(friend_id: @user.id), method: :post, class: "py-2 px-3 bg-blue-100 text-lblue text-sm text-center font-semibold rounded-md" do %>
+            <svg class="inline w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+              <g><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M4494.2,5014.7c-168.7-19.2-402.5-69-532.8-116.9c-816.5-293.2-1376.1-1012-1447-1859.1c-69-801.1,287.5-1550.5,946.8-1997.1c544.3-366.1,1265-465.7,1893.6-258.7c691.9,226.2,1230.4,799.2,1425.9,1516c46,172.5,49.8,216.6,49.8,552c0,402.5-19.2,504.1-147.6,824.1c-264.5,657.4-889.3,1169.1-1592.7,1303.3C4938.9,5007,4613.1,5026.2,4494.2,5014.7z"/><path d="M2865.1,202.1c-153.3-19.2-454.2-92-628.6-151.4C1161.2-321.1,340.9-1233.4,145.4-2274.2c-42.2-220.4-59.4-672.7-32.6-816.5c46-247.2,184-431.2,400.6-532.8l128.4-61.3l2564.4-5.8c1767.1-3.8,2575.9,1.9,2600.8,15.3c47.9,24.9,47.9,53.7-1.9,293.2c-95.8,467.7-21.1,1040.7,187.8,1460.5c214.7,427.4,622.9,835.7,1050.3,1050.3c272.2,136.1,642.1,222.3,956.4,226.2c120.7,1.9,208.9,11.5,216.6,23c28.8,47.9-396.7,348.8-720.7,511.7C7233.1,20,6901.5,129.3,6623.6,177.2c-216.6,36.4-302.8,38.3-1962.6,36.4C3704.6,211.7,2897.7,205.9,2865.1,202.1z"/><path d="M7721.8-1116.5c-373.7-70.9-691.9-241.5-967.9-515.6c-381.4-383.3-563.5-852.9-538.6-1391.5c26.8-555.8,285.6-1048.4,724.5-1380c565.4-425.5,1312.9-494.5,1943.4-176.3c187.8,93.9,285.6,162.9,448.5,318.2c676.6,651.7,759,1690.4,193.6,2443.7c-247.3,327.7-599.9,563.5-1006.2,672.7C8317.8-1091.6,7928.8-1076.3,7721.8-1116.5z M8965.7-2122.7c182.1-141.8,245.3-268.3,189.8-375.6c-17.3-30.7-318.2-343.1-668.9-691.9l-640.1-638.2H7762c-84.3,0-86.2,1.9-444.7,358.4c-452.3,452.3-458.1,463.8-239.6,690c191.7,201.2,274.1,199.3,494.5-5.7c93.9-88.2,166.7-141.8,193.6-141.8c28.8,0,168.7,126.5,463.8,419.7c233.8,230,440.8,427.4,461.9,438.9C8772.1-2023.1,8864.1-2042.2,8965.7-2122.7z"/></g></g>
+            </svg>
+            <span>Respond</span>
+          <% end %>
+        <% elsif !current_user.friends.include?(@user) %>
+          <%= link_to friend_requests_path(friend_id: @user.id), method: :post, class: "py-2 px-3 bg-blue-100 text-lblue text-sm text-center font-semibold rounded-md" do %>
+            <svg class="inline w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
+            </svg>
+            <span>Add Friend</span>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
