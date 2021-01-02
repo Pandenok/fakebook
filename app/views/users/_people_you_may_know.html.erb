@@ -2,7 +2,7 @@
 <% @users.each do |user| %>
   <div class="mx-2 px-2 py-2 rounded-lg hover:bg-lgray">
     <div class="flex">
-      <%= link_to user_path(user) do %>
+      <%= link_to user_path(user), remote: true do %>
         <div class="flex">
           <%= image_tag avatar_for(user, 56), class: "inline object-cover w-14 h-14 mr-3 border rounded-full" %>
         </div>

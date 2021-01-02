@@ -18,6 +18,10 @@ class UsersController < ApplicationController
                               .where(notifiable_type: "FriendRequest")
                               .where(sent_by_id: @user.id)
                               .each { |notification| notification.seen! }
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end                              
   end
 
   def edit; end

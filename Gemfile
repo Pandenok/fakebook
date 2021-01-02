@@ -48,6 +48,8 @@ gem 'pry', '~> 0.13.1'
 gem 'omniauth-facebook'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro', '~> 1.2'
+#This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
+gem 'jquery-rails', '~> 4.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

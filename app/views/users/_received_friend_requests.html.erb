@@ -4,7 +4,7 @@
 <% current_user.friend_requests.where.not(user_id: current_user.id).each do |request| %>
   <div class="mx-2 px-2 py-2 rounded-lg hover:bg-lgray">
     <div class="flex">
-      <%= link_to user_path(User.find(request.user_id)) do %>
+      <%= link_to user_path(User.find(request.user_id)), remote: true do %>
         <div class="flex">
           <%= image_tag avatar_for(User.find(request.user_id), 56), class: "inline object-cover w-14 h-14 mr-3 border rounded-full" %>
         </div>
