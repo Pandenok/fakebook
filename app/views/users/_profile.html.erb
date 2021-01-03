@@ -24,19 +24,19 @@
   <!-- Profile Navbar -->
   <div class="flex w-1/2 mt-1.5 px-4 m-auto">
     <div class="flex w-1/2 ml-4 mr-10 text-center">
-      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+      <div class="px-4 py-4 font-semibold border-b-4 border-lblue text-lblue hover:bg-gray-100 hover:rounded-lg cursor-pointer">
         Posts
       </div>
-      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
         About
       </div>
-      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
         Friends
         <span class="font-normal">
           <%= @user.friends.count %>
         </span>
       </div>
-      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg">
+      <div class="px-4 py-4 text-secondarygray font-semibold border-b-4 border-white focus:border-lblue focus:text-lblue hover:bg-gray-100 hover:rounded-lg cursor-not-allowed" disabled>
         Photos
       </div>
     </div>
@@ -84,24 +84,6 @@
           <span class="text-sm">Add Hobbies</span>
         </button>
       </div>
-      <!-- Photo Card -->
-      <%# <div class="flex flex-col w-full mb-4 px-4 py-2 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
-        <div class="text-xl font-semibold">
-          Photos
-        </div>
-        <div class="grid grid-cols-3 gap-4 my-3">
-          <div class="border">1</div>
-          <div class="border">2</div>
-          <div class="border">3</div>
-          <div class="border">4</div>
-          <div class="border">5</div>
-          <div class="border">6</div>
-          <div class="border">7</div>
-          <div class="border">8</div>
-          <div class="border">9</div>
-        </div>
-      </div> %>
-      
       <!-- Friends Card -->
       <% if @user.friends.any? %>
         <%= render 'friends_card' %>
