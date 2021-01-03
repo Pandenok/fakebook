@@ -77,12 +77,14 @@
         <div class="text-xl font-semibold">
           Intro
         </div>
-        <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
-          <span class="text-sm">Edit Details</span>
-        </button>
-        <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
-          <span class="text-sm">Add Hobbies</span>
-        </button>
+        <% if @user == current_user %>
+          <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
+            <span class="text-sm">Edit Details</span>
+          </button>
+          <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
+            <span class="text-sm">Add Hobbies</span>
+          </button>
+        <% end %>
       </div>
       <!-- Friends Card -->
       <% if @user.friends.any? %>
@@ -91,7 +93,15 @@
     </div>
     <!-- News Feed -->
     <div class="ml-auto w-7/12">
-      <%= render partial: 'posts/whats_on_your_mind_card' %>
+      <% if @user == current_user %>
+        <%= render partial: 'posts/whats_on_your_mind_card' %>
+      <% else %>
+        <div class="w-full mb-4 px-4 py-2 bg-white border border-gray-200 min-w-xs overflow-hidden rounded-lg shadow">
+          <div class="text-xl font-semibold">
+            Posts
+          </div>
+        </div>
+      <% end %>
       <%= render partial: 'posts/news_feed' %>
     </div>
   </div>
