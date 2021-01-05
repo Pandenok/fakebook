@@ -1,5 +1,5 @@
 <!-- Header -->
-<div class="w-full h-3/5 bg-white border-b border-gray-200 shadow">
+<div class="relative w-full h-3/5 bg-white border-b border-gray-200 shadow">
 
   <div class="relative w-1/2 h-2/3 bg-gradient-to-t from-gray-400 m-auto rounded-lg">
     <% if @user.cover_photo.attached? %>
@@ -13,16 +13,21 @@
     <% end %>
   </div>
 
-  <div class="w-1/2 px-4 m-auto">
+  <div class="w-1/2 px-4 m-auto flex flex-col justify-center">
     <p class="mt-8 text-center text-4xl font-bold">
       <%= @user.firstname + ' ' + @user.lastname %>
     </p>
-    <p class="mx-4 mt-3 pb-2 text-center text-base text-lblue font-semibold hover:underline border-b border-gray-300">
-      Add Bio
-    </p>
+    <% unless @user.bio.blank? %>
+      <p class="mx-4 mt-3 pb-2 text-center text-base font-semibold">
+        <%= @user.bio %>
+      </p>
+    <% end %>
+    <% if @user == current_user && @user.bio.blank? %>
+      <%= link_to "Add Bio", edit_user_path(current_user), class: "mx-4 mt-3 pb-2 text-center text-base text-lblue font-semibold hover:underline" %>
+    <% end %>
   </div>
   <!-- Profile Navbar -->
-  <div class="flex w-1/2 mt-1.5 px-4 m-auto">
+  <div class="absolute bottom-0 inset-x-0 flex w-1/2 mt-1.5 px-4 mx-auto border-t border-gray-300">
     <div class="flex w-1/2 ml-4 mr-10 text-center">
       <div class="px-4 py-4 font-semibold border-b-4 border-lblue text-lblue hover:bg-gray-100 hover:rounded-lg cursor-pointer">
         Posts
@@ -42,12 +47,12 @@
     </div>
     <div class="flex w-1/2 mr-4 py-3 justify-end">
       <% if @user == current_user %>
-        <button class="px-3 bg-gray-200 text-black font-bold rounded-lg">
-          <svg class="inline w-5 h-5 mb-1 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <%= link_to edit_user_path(current_user), class: "flex items-center px-3 bg-gray-200 text-center font-semibold rounded-md hover:bg-gray-300" do %>
+          <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
           </svg>
           <span>Edit Profile</span>
-        </button>
+        <% end %>
       <% else %>
         <% if current_user.friend_requests.where(user_id: @user.id, friend_id: current_user.id, status: 'pending').any? %>
           <%= link_to friend_requests_path(friend_id: @user.id), method: :post, class: "py-2 px-3 bg-blue-100 text-lblue text-sm text-center font-semibold rounded-md" do %>
@@ -77,13 +82,38 @@
         <div class="text-xl font-semibold">
           Intro
         </div>
+        <% unless @user.workplace.blank? %>
+          <div class="flex items-center my-3 text-gray-500">
+            <svg class="w-6 h-6 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+              <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+            </svg>
+            <span>Works at <%= @user.workplace %></span>
+          </div>
+        <% end %>
+        <% unless @user.hometown.blank? %>
+          <div class="flex items-center my-3 text-gray-500">
+            <svg class="w-6 h-6 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+              <g><path d="M498.6,990c0,0,368.9-398.6,368.9-604.3C867.5,178.6,702,10,498.6,10c-202,0-366.1,168.6-366.1,375.7c0,138.6,166.9,364.3,273.5,495.7L498.6,990L498.6,990z M498.6,258.6c67.3,0,122,57.1,122,127.1c0,65.7-54.7,122.9-122,122.9c-65.9,0-123.4-57.1-123.4-122.9C375.2,315.7,432.7,258.6,498.6,258.6L498.6,258.6z"/></g>
+            </svg>
+            <span>From <%= @user.hometown %></span>
+          </div>
+        <% end %>
+        <% unless @user.relationship_status.blank? %>
+          <div class="flex items-center my-3 text-gray-500">
+            <svg class="w-6 h-6 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+              <g><g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)"><path d="M4909,4925.4c-707.9-119.9-1341.2-753.2-1504.1-1501.8c-74.6-348.3-36.2-864,97.3-1273.4c49.8-153.8,180.9-477.2,203.6-502.1c4.5-4.5,47.5,27.1,95,70.1c135.7,122.1,350.6,262.4,554.1,357.4c705.7,334.7,1558.4,246.5,2266.3-233c194.5-133.5,531.5-465.9,665-660.4C7521.3,840.6,7686.4,435.8,7752,35.5c18.1-113.1,36.2-208.1,38.5-212.6c4.5-2.2,110.8,61.1,235.2,144.8C9002.8,621.3,9629.3,1379,9837.4,2159.3c79.2,296.3,83.7,719.2,11.3,983.9c-110.8,407.1-287.2,710.2-570,974.8c-330.2,309.9-680.8,438.8-1139.9,416.2c-386.8-18.1-680.8-128.9-992.9-373.2c-124.4-99.5-377.7-391.3-377.7-436.5c0-56.5-40.7-9-65.6,76.9c-38.4,124.4-167.4,364.1-269.1,490.8C6060.2,4760.3,5442.8,5015.8,4909,4925.4z"/><path d="M5049.2,1790.6c-31.7-6.8-131.2-31.7-221.6-56.5c-622-165.1-1149-707.9-1311.8-1348L3475,225.5l-160.6,162.8c-271.4,280.5-585.8,456.9-972.6,547.4c-239.7,56.5-707.9,33.9-945.4-43C686.3,659.7,170.6-68.6,105-925.8c-49.8-676.3,271.4-1411.3,895.7-2042.4c266.9-271.4,459.1-429.7,812-665C2583.9-4153.3,3698.9-4612.5,4434-4712c230.7-31.7,318.9-4.5,545.1,167.4c719.3,542.8,1549.3,1608.1,1949.6,2503.8c257.8,576.7,368.7,1044.9,368.7,1571.9c2.3,359.6-24.9,545.1-113.1,812c-226.2,665-827.8,1234.9-1479.2,1402.3C5558.1,1783.8,5157.8,1810.9,5049.2,1790.6z"/></g></g>
+            </svg>
+            <span><%= @user.relationship_status %></span>
+          </div>
+        <% end %>
         <% if @user == current_user %>
-          <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
-            <span class="text-sm">Edit Details</span>
-          </button>
-          <button class="my-3 py-1 px-3 bg-gray-200 text-black font-bold rounded-md">
-            <span class="text-sm">Add Hobbies</span>
-          </button>
+          <% if @user.workplace.blank? || @user.hometown.blank? || @user.relationship_status.blank? %>
+            <%= link_to "Edit Details", edit_user_path(current_user), class: "my-3 py-2 px-3 bg-gray-200 text-center text-black text-sm font-bold rounded-md hover:bg-gray-300" %>
+          <% end %>
+          <% if @user.hobbies.blank? %>
+            <%= link_to "Add Hobbies", edit_user_path(current_user), class: "my-3 py-2 px-3 bg-gray-200 text-center text-black text-sm font-bold rounded-md hover:bg-gray-300" %>
+          <% end %>
         <% end %>
       </div>
       <!-- Friends Card -->
