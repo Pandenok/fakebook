@@ -13,14 +13,14 @@
       <% end %>
     </div>
     <div class="flex border-t border-gray-300 pt-2 leading-8 text-secondarygray">
-      <button class="flex-1 hover:bg-gray-100 rounded-lg py-1 cursor-not-allowed" disabled>
+      <button class="flex w-1/3 justify-center hover:bg-gray-100 rounded-lg py-1 cursor-not-allowed" disabled>
         <svg class="inline w-8 h-8 mb-1 text-newred fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
         <span class="font-semibold">Live Video</span>
       </button>
 
-      <div class="flex-1 py-1 rounded-lg hover:bg-gray-100 cursor-pointer">
+      <div class="flex w-1/3 justify-center py-1 rounded-lg hover:bg-gray-100 cursor-pointer">
         <%= simple_form_for Post.new, url: posts_path, method: :post  do |f| %>
           <label class="flex items-center justify-center font-semibold cursor-pointer">
             <svg class="inline w-8 h-8 text-lgreen fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@
         <% end %>
       </div>
 
-      <button class="flex-1 hover:bg-gray-100 rounded-lg py-1 cursor-not-allowed" disabled>
+      <button class="flex w-1/3 justify-center hover:bg-gray-100 rounded-lg py-1 cursor-not-allowed" disabled>
         <svg class="inline w-8 h-8 mb-1 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z" clip-rule="evenodd" />
         </svg>
