@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_one_attached :cover_photo
   has_one_attached :avatar
   
+  validates :firstname, :lastname, :birthdate, :gender,  presence: true
   validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
   validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
 
