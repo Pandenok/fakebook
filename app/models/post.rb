@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   
   validates :images, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'],
                              size_range: 1..3.megabytes,

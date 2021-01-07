@@ -1,12 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook]
-
-  after_create :send_welcome_email
-  
   enum gender: { male: 'Male', female: 'Female', custom: 'Custom' }
   
   has_many :friend_requests,
@@ -31,16 +23,24 @@ class User < ApplicationRecord
               .where.not(id: user.id) },
     through: :accepted_friend_requests
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, foreign_key: :sent_to_id, dependent: :destroy
-  has_one_attached :cover_photo
-  has_one_attached :avatar
+  has_one_attached :cover_photo, dependent: :purge_later
+  has_one_attached :avatar, dependent: :purge_later
   
   validates :firstname, :lastname, :birthdate, :gender,  presence: true
   validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
   validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
+
+  after_create :send_welcome_email
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
 
   def mutual_friends_with(user)
     self.friends.where(users: {id: user.friends.pluck(:id)})
