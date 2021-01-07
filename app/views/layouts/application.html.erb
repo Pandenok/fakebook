@@ -14,15 +14,6 @@
   </head>
 
   <body>
-    <% if flash[:alert] %>
-      <div class="flex items-center px-4 py-3 leading-normal text-red-700 bg-red-100" role="alert">
-        <svg class="w-8 h-8 mr-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <p class="font-semibold"><%= alert %></p>
-      </div>
-    <% end %>
-
     <% if user_signed_in? %>
       <% if flash[:notice] %>
         <div class="absolute top-14 right-4 bg-blue-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center mx-auto w-max shadow">
@@ -41,6 +32,15 @@
         </div>
       <% end %>
       <%= render 'layouts/navbar' %>
+    <% else %>
+      <% if flash[:alert] %>
+        <div class="flex items-center px-4 py-3 leading-normal text-red-700 bg-red-100" role="alert">
+          <svg class="w-8 h-8 mr-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="font-semibold"><%= alert %></p>
+        </div>
+      <% end %>
     <% end %>
     
     <%= yield %>
