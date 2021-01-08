@@ -42,6 +42,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  def fullname
+    self.firstname + ' ' + self.lastname
+  end
+
   def mutual_friends_with(user)
     self.friends.where(users: {id: user.friends.pluck(:id)})
   end
