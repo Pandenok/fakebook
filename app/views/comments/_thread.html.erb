@@ -1,5 +1,5 @@
 <% if post.comments.any? %>
-  <% post.comments.each do |comment| %>
+  <% post.comments.order('created_at ASC').each do |comment| %>
     <div class="flex w-full mt-2.5">
       <%= link_to user_path(comment.user_id), class: "flex-none" do %>
         <%= image_tag avatar_for(User.find(comment.user_id), 32), class: "inline object-cover w-8 h-8 mr-2.5 border rounded-full" %>
