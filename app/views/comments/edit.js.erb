@@ -1,0 +1,2 @@
+document.getElementById('<%= dom_id(@comment) %>').insertAdjacentHTML('afterend', "<%= j render 'inline_form', comment: @comment %>")
+document.getElementById('<%= dom_id(@comment) %>').style.display = 'none'
