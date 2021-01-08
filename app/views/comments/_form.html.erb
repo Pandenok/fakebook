@@ -1,14 +1,9 @@
-<div class="w-full mt-2.5">
-  <%= simple_form_for post.comments.build, url: post_comments_path(post) do |f| %>
-    <%# f.error_notification %>
-    <%# f.error :base %>
-    <div class="flex">
-      <%= image_tag avatar_for(current_user, 32), class: "inline object-cover w-8 h-8 mr-1.5 border rounded-full" %>
-      <%# <img class="inline object-cover w-8 h-8 mr-2.5 border rounded-full" src="https://scontent-fco1-1.xx.fbcdn.net/v/t1.30497-1/cp0/c12.0.40.40a/p40x40/84241059_189132118950875_4138507100605120512_n.jpg?_nc_cat=1&ccb=2&_nc_sid=7206a8&_nc_ohc=02k-Raa85_sAX88_QOT&_nc_ht=scontent-fco1-1.xx&tp=27&oh=6ab026268e92ba2c2231e4af6fb4ebd4&oe=5FEEEF9E" alt="Profile image"/> %>
-      <%= f.text_field :body,
-                        required: true,
-                        placeholder: "Write a comment...",
-                        class: "w-full text-base text-secondarygray px-4 rounded-2xl bg-gray-100" %>
-    </div>
-  <% end %>
-</div>
+<%= simple_form_for post.comments.build, url: post_comments_path(post), html: { class: "w-full mt-2.5" } do |f| %>
+  <div class="flex">
+    <%= image_tag avatar_for(current_user, 32), class: "inline object-cover w-8 h-8 mr-1.5 border rounded-full" %>
+    <%= f.text_field :body,
+                      required: true,
+                      placeholder: "Write a comment...",
+                      class: "w-full text-base text-secondarygray px-4 rounded-2xl bg-gray-100" %>
+  </div>
+<% end %>
