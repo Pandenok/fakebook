@@ -1,3 +1,5 @@
-<%= simple_form_for @comment, url: post_comment_path, remote: true do |f| %>
-  <%= f.text_field :body %>
+<%= simple_form_for @comment, url: post_comment_path, remote: true, html: { class: "w-full" } do |f| %>
+  <%= f.text_field :body, 
+                  autofocus: true,
+                  class: "w-full text-base py-2 px-4 rounded-2xl bg-gray-100" %>
 <% end %>
