@@ -7,7 +7,7 @@
       </div>
       <div class="flex flex-1 flex-col justify-center">
         <div class="text-base text-black font-semibold">
-          <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
+          <%= notification.sent_by.fullname %>
         </div>
         <div class="text-sm font-normal text-secondarygray">
           <%= notification.action %> your <%= notification.notifiable_type.downcase %>
@@ -25,7 +25,7 @@
       </div>
       <div class="flex flex-1 flex-col justify-center">
         <div class="text-base text-black font-semibold">
-          <%= notification.sent_by.firstname + ' ' + notification.sent_by.lastname %>
+          <%= notification.sent_by.fullname %>
         </div>
           <div class="text-sm font-normal text-secondarygray">
             <%= notification.action %>

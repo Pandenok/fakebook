@@ -11,7 +11,7 @@
         <div class="flex flex-1 flex-col">
           <%= link_to user_path(post.user_id) do %>
             <div class="text-base font-semibold hover:underline">
-              <%= User.find(post.user_id).firstname + ' ' + User.find(post.user_id).lastname %>
+              <%= User.find(post.user_id).fullname %>
             </div>
           <% end %>
           <div class="text-sm font-normal text-secondarygray">
