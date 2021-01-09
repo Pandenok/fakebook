@@ -8,13 +8,13 @@ class LikesController < ApplicationController
       Notification.create(sent_to: @post.user, sent_by: current_user, action: "liked", notifiable: @post)
     end
     flash[:notice] = "You liked the post!"
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
     @like.destroy
     flash[:notice] = "You unliked the post!"
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 end

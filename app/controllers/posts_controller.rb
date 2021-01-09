@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:notice] = "Post was successfully deleted!"
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def delete_image_attachment

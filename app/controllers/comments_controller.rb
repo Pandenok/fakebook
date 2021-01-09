@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "Something went wrong..."
     end
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def update
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:notice] = "Comment is successfully deleted!"
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   private
