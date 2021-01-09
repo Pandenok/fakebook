@@ -1,5 +1,5 @@
 <div class="h-screen overflow-x-hidden">
-  <div class="fixed z-10 flex flex-col w-1/6 min-h-screen mr-auto mt-14 pt-3 bg-white shadow">
+  <div class="fixed z-10 flex flex-col w-1/6 h-screen overflow-auto mr-auto pt-14 pt-3 bg-white shadow">
     <h1 class="mx-2 px-2 text-2xl text-black font-bold">Friends</h1>
     <% if current_user.friend_requests.where.not(user_id: current_user.id).any? %>
       <%= render 'received_friend_requests' %>
