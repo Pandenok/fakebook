@@ -1,4 +1,6 @@
 <div class="flex flex-col px-3 py-2 rounded-2xl bg-gray-100">
-  <%= link_to "#{User.find(comment.user_id).fullname}", user_path(comment.user_id), class: "text-sm font-semibold" %>
+  <%= link_to "#{User.find(comment.user_id).fullname}",
+              user_path(comment.user_id),
+              class: "text-sm font-semibold" %>
   <%= comment.body %>
 </div>

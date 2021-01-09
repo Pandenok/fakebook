@@ -1,9 +1,13 @@
 <p class="mx-2 px-2 text-2xl text-black font-bold">Notifications</p>
+
 <% current_user.notifications.unseen.recent.each do |notification| %>
-  <% if notification.action == "liked" || notification.action == "commented" %>
-    <%= link_to post_path(id: notification.notifiable_id, notification_id: notification.id), class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+  <% if notification.action == "liked" ||
+        notification.action == "commented" %>
+    <%= link_to post_path(id: notification.notifiable_id, notification_id: notification.id),
+                class: "flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
       <div class="flex">
-        <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
+        <%= image_tag avatar_for(notification.sent_by, 56),
+                      class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
       </div>
       <div class="flex flex-1 flex-col justify-center">
         <div class="text-base text-black font-semibold">
@@ -18,10 +22,14 @@
       </div>
     <% end %> 
   <% end %> 
-  <% if notification.action == "sent" || notification.action == "accepted" || notification.action == "rejected" %>
-    <%= link_to user_path(id: notification.sent_by, notification_id: notification.id), class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
+  <% if notification.action == "sent" ||
+        notification.action == "accepted" ||
+        notification.action == "rejected" %>
+    <%= link_to user_path(id: notification.sent_by, notification_id: notification.id),
+                class:"flex block mx-2 px-2 py-2 rounded-md hover:bg-gray-100" do %>
       <div class="flex">
-        <%= image_tag avatar_for(notification.sent_by, 56), class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
+        <%= image_tag avatar_for(notification.sent_by, 56),
+                      class: "inline object-cover w-14 h-14 mr-2.5 border rounded-full" %>
       </div>
       <div class="flex flex-1 flex-col justify-center">
         <div class="text-base text-black font-semibold">
