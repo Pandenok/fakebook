@@ -5,6 +5,6 @@ class Post < ApplicationRecord
   has_many_attached :images, dependent: :destroy
   
   validates :images, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'],
-                             size_range: 1..3.megabytes,
+                             size_range: 1..1.megabytes,
                              limit_range: 1..5 }
 end

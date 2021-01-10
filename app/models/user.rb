@@ -31,8 +31,8 @@ class User < ApplicationRecord
   has_one_attached :avatar, dependent: :purge_later
   
   validates :firstname, :lastname, presence: true
-  validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
-  validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
+  validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..1.megabytes }
+  validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..1.megabytes }
 
   after_create :send_welcome_email
 
