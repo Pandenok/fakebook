@@ -52,6 +52,8 @@ gem 'figaro', '~> 1.2'
 gem 'jquery-rails', '~> 4.4'
 # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'aws-sdk-s3'
+# Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
+gem 'faker', '~> 2.15', '>= 2.15.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -103,6 +103,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
@@ -281,6 +283,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.7, >= 4.7.3)
+  faker (~> 2.15, >= 2.15.1)
   figaro (~> 1.2)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.4)
