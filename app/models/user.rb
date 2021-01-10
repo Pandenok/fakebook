@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_one_attached :cover_photo, dependent: :purge_later
   has_one_attached :avatar, dependent: :purge_later
   
-  validates :firstname, :lastname, :birthdate, :gender,  presence: true
+  validates :firstname, :lastname, presence: true
   validates :cover_photo, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
   validates :avatar, blob: { content_type: ['image/jpg', 'image/jpeg', 'image/png'], size_range: 1..3.megabytes }
 
