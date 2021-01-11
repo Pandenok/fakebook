@@ -3,7 +3,7 @@
 
   <div class="relative w-1/2 h-2/3 bg-gradient-to-t from-gray-400 m-auto rounded-lg">
     <% if @user.cover_photo.attached? %>
-      <%= image_tag @user.cover_photo, class: "object-cover w-full h-full rounded-lg" %>
+      <%= image_tag @user.cover_photo, class: "object-fill w-full h-full rounded-lg" %>
     <% end %>
     <% unless @user == current_user %>
       <%= image_tag avatar_for(@user, 176), class: "absolute object-cover w-44 h-44 mx-auto inset-x-0 -bottom-6 border-4 border-white rounded-full" %>

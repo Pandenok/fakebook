@@ -14,7 +14,9 @@
           <%= notification.sent_by.fullname %>
         </div>
         <div class="text-sm font-normal text-secondarygray">
-          <%= notification.action %> your <%= notification.notifiable_type.downcase %>
+          <%= notification.action %> 
+            <% if notification.action == 'commented' %>on<% end %>
+          your <%= notification.notifiable_type.downcase %>
         </div>
         <div class="text-xs font-semibold text-lblue">
           <%= time_ago_in_words(notification.created_at) %> ago
