@@ -13,9 +13,9 @@ tables.each do |table|
 end
 
 User.create(
-  firstname: "Mickey",
-  lastname: "Mouse",
-  email: "mickey@mouse.com",
+  firstname: "Fred",
+  lastname: "Flintstone",
+  email: "fred@flintstone.com",
   password: 'password',
   gender: 'male',
   birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
@@ -58,9 +58,16 @@ end
     hometown: Faker::Address.city
   )
 end
+
+User.male.each do |user|
+  url = URI.parse(Faker::Avatar.image(set: "set2", bgset: "bg1"))
+  filename = File.basename(url.path)
+  file = URI.open(url)
+  user.avatar.attach(io: file, filename: filename)
+end
   
-User.all.each do |user|
-  url = URI.parse(Faker::Avatar.image)
+User.female.each do |user|
+  url = URI.parse(Faker::Avatar.image(set: "set4", bgset: "bg2"))
   filename = File.basename(url.path)
   file = URI.open(url)
   user.avatar.attach(io: file, filename: filename)
