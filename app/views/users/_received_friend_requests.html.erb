@@ -11,8 +11,7 @@
         <div class="flex flex-1 flex-col">
           <div class="flex items-center mb-1">
             <div class="text-base font-semibold">
-              <!-- Add helper in User.rb name full_name -->
-              <%= User.find(request.user_id).firstname + ' ' + User.find(request.user_id).lastname %>
+              <%= User.find(request.user_id).fullname %>
             </div>
             <div class="ml-auto text-xs font-light text-secondarygray">
               <%= time_ago_in_words(request.created_at) %>

@@ -2,12 +2,8 @@
   <%= pluralize(current_user.mutual_friends_with(user).count, "mutual friend") %>
   <ul class="dropdown-menu hidden absolute overflow-visible w-max py-2 bg-black opacity-80 rounded-lg border shadow-xl">
     <% current_user.mutual_friends_with(user).each do |friend| %>
-      <!-- Add helper in User.rb named full_name -->
-      <% firstname = friend.firstname %>
-      <% lastname = friend.lastname %>
-      <% full_name = firstname + ' ' + lastname %>
       <li class="rounded-t text-xs text-white px-2 block whitespace-no-wrap">
-        <%= full_name %>
+        <%= friend.fullname %>
       </li>
     <% end %>
   </ul>

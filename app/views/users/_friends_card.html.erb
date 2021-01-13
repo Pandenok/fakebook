@@ -15,7 +15,7 @@
         <%= link_to user_path(friend) do %>
           <%= image_tag avatar_for(friend, 100), class: "inline object-contain w-full h-full border rounded-lg" %>
           <span class="text-sm leading-3 tracking-tight font-semibold hover:underline">
-            <%= friend.firstname + ' ' + friend.lastname %>
+            <%= friend.fullname %>
           </span>
         <% end %>
       </div>

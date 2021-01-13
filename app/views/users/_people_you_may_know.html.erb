@@ -8,8 +8,7 @@
         </div>
         <div class="flex flex-1 flex-col">
           <div class="mb-1 text-base font-semibold">
-            <!-- Add helper in User.rb name full_name -->
-            <%= user.firstname + ' ' + user.lastname %>
+            <%= user.fullname %>
           </div>
           <div class="mb-1 text-xs font-normal text-secondarygray">
             <% if current_user.mutual_friends_with(user).any? %>

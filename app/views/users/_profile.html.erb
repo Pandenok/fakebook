@@ -15,7 +15,7 @@
 
   <div class="w-1/2 px-4 m-auto flex flex-col justify-center">
     <p class="mt-8 text-center text-4xl font-bold">
-      <%= @user.firstname + ' ' + @user.lastname %>
+      <%= @user.fullname %>
     </p>
     <% unless @user.bio.blank? %>
       <p class="mx-4 mt-3 pb-2 text-center text-base font-semibold">
