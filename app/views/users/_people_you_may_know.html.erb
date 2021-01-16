@@ -19,7 +19,7 @@
           </div>
           <div class="flex -ml-2 pt-1.5 space-x-2">
             <%= link_to "Add Friend", friend_requests_path(friend_id: user.id), method: :post, class: "flex-1 py-2 bg-lblue text-white text-sm text-center font-semibold rounded-md" %>
-            <button class="flex-1 py-2 bg-gray-200 text-sm text-center font-semibold rounded-md hover:bg-gray-300">
+            <button class="flex-1 py-2 bg-gray-200 text-sm text-center font-semibold rounded-md hover:bg-gray-300 cursor-not-allowed" disabled>
               <span class="font-semibold">Remove</span>
             </button>
           </div>
