@@ -1,7 +1,7 @@
 <h2 class="mx-2 px-2 text-lg font-semibold">
   <%= pluralize(current_user.friend_requests.where.not(user_id: current_user.id).count, "Friend Request") %>
 </h2>
-<% current_user.friend_requests.where.not(user_id: current_user.id).each do |request| %>
+<% current_user.friend_requests.pending.where.not(user_id: current_user.id).each do |request| %>
   <div class="mx-2 px-2 py-2 rounded-lg hover:bg-lgray">
     <div class="flex">
       <%= link_to user_path(User.find(request.user_id)), remote: true do %>
