@@ -11,9 +11,14 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.create(post_id: @post.id, body: params[:comment][:body])
     if @comment.save
       unless current_user == @post.user
-        Notification.create(sent_to: @post.user, sent_by: current_user, action: "commented", notifiable: @post)
-        flash[:notice] = "You commented on the post!"
+        Notification.create(
+          sent_to: @post.user,
+          sent_by: current_user,
+          action: "commented",
+          notifiable: @post
+        )
       end
+      flash[:notice] = "You commented on the post!"
     else
       flash[:alert] = "Something went wrong..."
     end
