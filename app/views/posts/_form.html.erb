@@ -12,6 +12,7 @@
     <%# f.error :base %>
     <%= f.input :body,
                 label: false,
+                autofocus: true,
                 required: true,
                 input_html: { placeholder: "What's on your mind, #{current_user.firstname}?",
                               rows: 5,
