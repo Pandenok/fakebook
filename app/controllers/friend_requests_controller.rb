@@ -1,13 +1,14 @@
 class FriendRequestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_friend_request, only: [:update, :destroy]
 
   def create
     @friend = User.find(params[:friend_id])
     @friend_request = current_user.friend_requests.build(friend_id: @friend.id)
     if @friend_request.save
       @friend_request.pending!
-      Notification.create(sent_to: @friend, sent_by: current_user, action: "sent", notifiable: @friend_request)
-      flash[:notice] = "Friend request sent!"
+      send_notification_to(@friend)
+      flash[:notice] = "Friend request to #{@friend.firstname} sent!"
     else
       flash[:alert] = "Ooops! Something went wrong!"
     end
@@ -15,26 +16,38 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
-    @friend_request = FriendRequest.find(params[:id])
     @requestor = User.find(@friend_request.user_id)
     @friend_request.accepted! if @friend_request.pending?
-    Notification.create(sent_to: @requestor, sent_by: current_user, action: "accepted", notifiable: @friend_request)
-    flash[:notice] = "Friend request accepted!"
+    send_notification_to(@requestor)
+    flash[:notice] = "#{@requestor.firstname}'s friend request accepted!"
     redirect_to users_path
   end
 
   def destroy
-    @sent_friend_request = FriendRequest.find(id: params[:id], user_id: current_user.id)
-    @received_friend_request = FriendRequest.find(id: params[:id], friend_id: current_user.id)
-    @requestor = User.find(@received_friend_request.user_id)
-    if @sent_friend_request
-      @sent_friend_request.destroy 
+    @requestor = User.find(@friend_request.user_id)
+    if @friend_request.user_id == current_user.id
+      @friend_request.destroy 
       flash[:notice] = "Friend request removed!"
-    elsif @received_friend_request
-      @received_friend_request.rejected!
-      Notification.create(sent_to: @requestor, sent_by: current_user, action: "rejected", notifiable: @received_friend_request)
-      flash[:notice] = "Friend request rejected!"
+    else
+      @friend_request.rejected!
+      send_notification_to(@requestor)
+      flash[:notice] = "#{@requestor.firstname}'s friend request rejected!"
     end
     redirect_to users_path
+  end
+
+  private
+
+  def set_friend_request
+    @friend_request = FriendRequest.find(params[:id])
+  end
+
+  def send_notification_to(user)
+    Notification.create(
+      sent_to: user,
+      sent_by: current_user,
+      action: "sent",
+      notifiable: @friend_request
+    )
   end
 end
