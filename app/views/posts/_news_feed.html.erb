@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
   <div class="mb-4 bg-white border border-gray-200 min-w-xs rounded-lg shadow">
     <div class="px-4 py-2">
-      <div class="flex">
+      <div id="post_header" class="flex">
         <%= link_to user_path(post.user_id) do %>
           <div class="flex">
             <%= image_tag avatar_for(User.find(post.user_id), 40), 
