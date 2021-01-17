@@ -23,6 +23,7 @@ User.create(
   bio: Faker::Movie.unique.quote,
   workplace: Faker::Company.name,
   hometown: Faker::Address.city
+  hobbies: Faker::Superhero.power
 )
 
 5.times do 
@@ -39,6 +40,7 @@ User.create(
     bio: Faker::Movie.unique.quote,
     workplace: Faker::Company.name,
     hometown: Faker::Address.city
+    hobbies: Faker::Superhero.power
   )
 end
 
@@ -56,6 +58,7 @@ end
     bio: Faker::Movie.unique.quote,
     workplace: Faker::Company.name,
     hometown: Faker::Address.city
+    hobbies: Faker::Superhero.power
   )
 end
 
