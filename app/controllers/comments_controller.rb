@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.create(post_id: @post.id, body: params[:comment][:body])
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       unless current_user == @post.user
         Notification.create(
