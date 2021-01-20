@@ -4,14 +4,12 @@ class FriendRequestsController < ApplicationController
 
   def create
     @friend = User.find(params[:friend_id])
-    @friend_request = current_user.friend_requests.build(friend_id: @friend.id)
-    if @friend_request.save
-      @friend_request.pending!
-      send_notification_to(@friend)
-      flash[:notice] = "Friend request to #{@friend.firstname} sent!"
-    else
-      flash[:alert] = "Ooops! Something went wrong!"
-    end
+    @friend_request = current_user.friend_requests.create(
+      friend_id: @friend.id, 
+      status: :pending
+    )
+    send_notification_to(@friend)
+    flash[:notice] = "Friend request to #{@friend.firstname} sent!"
     redirect_to users_path
   end
 
