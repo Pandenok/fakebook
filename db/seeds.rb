@@ -19,11 +19,6 @@ User.create(
   password: 'password',
   gender: 'male',
   birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
-  relationship_status: Faker::Demographic.marital_status,
-  bio: Faker::Movie.unique.quote,
-  workplace: Faker::Company.name,
-  hometown: Faker::Address.city
-  hobbies: Faker::Superhero.power
 )
 
 5.times do 
@@ -39,7 +34,7 @@ User.create(
     relationship_status: Faker::Demographic.marital_status,
     bio: Faker::Movie.unique.quote,
     workplace: Faker::Company.name,
-    hometown: Faker::Address.city
+    hometown: Faker::Address.city,
     hobbies: Faker::Superhero.power
   )
 end
@@ -57,7 +52,7 @@ end
     relationship_status: Faker::Demographic.marital_status,
     bio: Faker::Movie.unique.quote,
     workplace: Faker::Company.name,
-    hometown: Faker::Address.city
+    hometown: Faker::Address.city,
     hobbies: Faker::Superhero.power
   )
 end
