@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: facebook_clone_development
+  database: fakebook_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: facebook-clone
+  #username: fakebook
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: facebook_clone_test
+  database: fakebook_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: facebook_clone_production
-  username: facebook_clone
-  password: <%= ENV['FACEBOOK_CLONE_DATABASE_PASSWORD'] %>
+  database: fakebook_production
+  username: fakebook
+  password: <%= ENV['FAKEBOOK_DATABASE_PASSWORD'] %>
