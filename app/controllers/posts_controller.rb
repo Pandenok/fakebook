@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = 
-      Post.with_attached_images.where(
+    @posts = Post.includes(:comments, :likes).with_attached_images
+      .where(
         user_id: [
           current_user.id, 
           current_user.friends.pluck(:id)

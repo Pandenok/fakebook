@@ -6,11 +6,12 @@ class UsersController < ApplicationController
 
   def index
     @users = 
-      User.where.not(id: [
-        current_user.id,
-        current_user.friends.pluck(:id),
-        current_user.friend_requests.pluck(:user_id, :friend_id)
-      ].flatten)
+      User.with_attached_avatar.includes(:posts, :comments, :likes, :notifications)
+        .where.not(id: [
+          current_user.id,
+          current_user.friends.pluck(:id),
+          current_user.friend_requests.pluck(:user_id, :friend_id)
+        ].flatten)
     current_user.notifications
       .unseen
       .where(action: "sent")
