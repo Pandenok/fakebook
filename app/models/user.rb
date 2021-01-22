@@ -43,7 +43,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   def fullname
-    self.firstname + ' ' + self.lastname
+    [firstname, lastname].join(' ')
   end
 
   def mutual_friends_with(user)
