@@ -84,7 +84,7 @@ RSpec.describe "Users", type: :request do
     context "WHEN authorized" do
       before do 
         login_as(@user, scope: :user)
-        @user_bio = Faker::Movie.unique.quote
+        @user_bio = "Go ahead, make my day"
         @user_workplace = Faker::Company.name
       end
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :request do
   before do
     @user = create(:user)
-    @post = @user.posts.create(body: Faker::Hipster.sentence)
+    @post = @user.posts.create(body: "Jean shorts trust fund fanny pack poutine. Lumbersexual cred lomo. Poutine diy typewriter.")
     @notification = Notification.create(
       sent_to: @user,
       sent_by: create(:user),
@@ -25,9 +25,9 @@ RSpec.describe "Posts", type: :request do
       before do
         @friend = create(:user)
         @user.friends << @friend
-        @friend_post = @user.posts.create(body: Faker::Hipster.sentence)
+        @friend_post = @user.posts.create(body: "Brooklyn master loko. Marfa viral sartorial art party quinoa cred single origin coffee.")
         @stranger = create(:user)
-        @stranger_post = @stranger.posts.create(body: Faker::Hipster.sentence)
+        @stranger_post = @stranger.posts.create(body: "Five dollar toast echo chambray vegan kitsch mumblecore blog semiotics.")
         login_as(@user, scope: :user)
       end
 
@@ -155,7 +155,7 @@ RSpec.describe "Posts", type: :request do
       before { login_as(@user, scope: :user) }
 
       context "WHEN all params are valid" do
-        before { @updated_post_body = Faker::Hipster.sentence }
+        before { @updated_post_body = "Schlitz before they sold out fashion axe chambray trust fund phlogiston yr." }
 
         it "updates user's post" do
           put post_path(@post), params: { post: { body: @updated_post_body } }

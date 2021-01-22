@@ -72,7 +72,7 @@ RSpec.describe "FriendRequests", type: :request do
         patch friend_request_path(@pending_friend_request), params: { id: @pending_friend_request.id }
 
         expect(@user.notifications.last.sent_by).to eq(@potential_friend)
-        expect(@user.notifications.last.action).to eq('sent')
+        expect(@user.notifications.last.action).to eq('accepted')
       end
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe "FriendRequests", type: :request do
           delete friend_request_path(@pending_friend_request), params: { id: @pending_friend_request.id }
 
           expect(@user.notifications.last.sent_by).to eq(@potential_friend)
-          expect(@user.notifications.last.action).to eq('sent')
+          expect(@user.notifications.last.action).to eq('rejected')
         end
       end
     end

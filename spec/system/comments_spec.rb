@@ -7,10 +7,10 @@ RSpec.describe "Comments", type: :system do
 
     @user = create(:user)
     @another_user = create(:user)
-    @post = @user.posts.create(body: Faker::Hipster.paragraph(sentence_count: 1))
-    @another_user_comment = @post.comments.create(body: Faker::Hipster.sentence, user: @another_user)
-    @comment = Faker::Hipster.sentence
-    @new_comment = Faker::Hipster.sentence
+    @post = @user.posts.create(body: "Jean shorts trust fund fanny pack poutine. Lumbersexual cred lomo. Poutine diy typewriter.")
+    @another_user_comment = @post.comments.create(body: "Tumblr muggle magic viral chambray austin leggings.", user: @another_user)
+    @comment = "Iphone microdosing normcore shabby chic."
+    @new_comment = "Fanny pack actually quinoa."
     login_as(@user, scope: :user)
   end
 

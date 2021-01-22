@@ -4,8 +4,8 @@ RSpec.describe "Comments", type: :request do
   before do
     @user = create(:user)
     @post_creator = create(:user)
-    @post = @post_creator.posts.create(body: Faker::Hipster.sentence)
-    @comment_params = { post_id: @post.id, body: Faker::Hipster.sentence(word_count: 3) }
+    @post = @post_creator.posts.create(body: "Jean shorts trust fund fanny pack poutine. Lumbersexual cred lomo. Poutine diy typewriter.")
+    @comment_params = { post_id: @post.id, body: "Tumblr muggle magic viral chambray austin leggings." }
   end
 
   describe "POST comments#create" do
