@@ -22,7 +22,7 @@ RSpec.describe "FriendRequests", type: :system do
   end
 
   scenario 'User can accept friend request' do
-    @user.friend_requests.create(friend_id: @friendly_user.id)
+    @user.friend_requests.create(friend_id: @friendly_user.id, status: :pending)
     login_as(@friendly_user, scope: :user)
     visit users_path
     user_card = find('h2', text: 'Friend Request').sibling('div', text: @user.fullname)
@@ -34,7 +34,7 @@ RSpec.describe "FriendRequests", type: :system do
   end
 
   scenario 'User can reject friend request' do
-    @user.friend_requests.create(friend_id: @misanthropic_user.id)
+    @user.friend_requests.create(friend_id: @misanthropic_user.id, status: :pending)
     login_as(@misanthropic_user, scope: :user)
     visit users_path
     user_card = find('h2', text: 'Friend Request').sibling('div', text: @user.fullname)
@@ -42,6 +42,6 @@ RSpec.describe "FriendRequests", type: :system do
     delete_button.click
 
     expect(page).to have_content ("#{@user.firstname}'s friend request rejected!")
-    expect(find('h1', text: 'People You May Know')).to have_sibling('div', text: @user.fullname)
+    expect(find('h1', text: 'People You May Know')).to_not have_sibling('div', text: @user.fullname)
   end
 end
