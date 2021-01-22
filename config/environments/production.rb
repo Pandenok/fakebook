@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+ 
+  # limit the size of the log folder
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 20.megabytes)
 end
