@@ -61,7 +61,7 @@ RSpec.describe "Comments", type: :request do
           params: { 
             comment: { 
               post_id: @post.id, 
-              body: Faker::Hipster.sentence(word_count: 3) 
+              body: "Fanny pack actually quinoa." 
             } 
           }, 
         xhr: true
