@@ -8,7 +8,7 @@ class FriendRequestsController < ApplicationController
       friend_id: @friend.id, 
       status: :pending
     )
-    send_notification_to(@friend)
+    send_notification_to(@friend, "sent")
     flash[:notice] = "Friend request to #{@friend.firstname} sent!"
     redirect_to users_path
   end
@@ -16,7 +16,7 @@ class FriendRequestsController < ApplicationController
   def update
     @requestor = User.find(@friend_request.user_id)
     @friend_request.accepted! if @friend_request.pending?
-    send_notification_to(@requestor)
+    send_notification_to(@requestor, "accepted")
     flash[:notice] = "#{@requestor.firstname}'s friend request accepted!"
     redirect_to users_path
   end
@@ -28,7 +28,7 @@ class FriendRequestsController < ApplicationController
       flash[:notice] = "Friend request removed!"
     else
       @friend_request.rejected!
-      send_notification_to(@requestor)
+      send_notification_to(@requestor, "rejected")
       flash[:notice] = "#{@requestor.firstname}'s friend request rejected!"
     end
     redirect_to users_path
@@ -40,11 +40,11 @@ class FriendRequestsController < ApplicationController
     @friend_request = FriendRequest.find(params[:id])
   end
 
-  def send_notification_to(user)
+  def send_notification_to(user, action)
     Notification.create(
       sent_to: user,
       sent_by: current_user,
-      action: "sent",
+      action: action,
       notifiable: @friend_request
     )
   end
