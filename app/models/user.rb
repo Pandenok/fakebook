@@ -3,8 +3,7 @@ class User < ApplicationRecord
   
   has_many :friend_requests,
       ->(user) { unscope(where: :user_id)
-              .where("user_id = ? OR friend_id = ?", user.id, user.id)
-              .pending },
+              .where("user_id = ? OR friend_id = ?", user.id, user.id) },
     inverse_of: :user,
     class_name: "FriendRequest",
     dependent: :destroy
