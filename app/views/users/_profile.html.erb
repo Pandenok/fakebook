@@ -140,7 +140,7 @@
           </div>
         </div>
       <% end %>
-      <%= render partial: 'posts/news_feed' %>
+      <%= render partial: 'posts/news_feed', locals: { posts: @user.posts } %>
     </div>
   </div>
 </div>

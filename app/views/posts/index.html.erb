@@ -4,6 +4,6 @@
   </div>
   
   <div class="w-1/3 mx-auto">
-    <%= render 'posts/news_feed' %>
+    <%= render partial: 'posts/news_feed', locals: { posts: @posts } %>
   </div>
 </div>

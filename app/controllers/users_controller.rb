@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.order('created_at DESC')
     current_user.notifications
       .unseen
       .where(notifiable_type: "FriendRequest")
@@ -36,8 +35,6 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    @posts = @user.posts.order('created_at DESC')
-
     if @user.save
       flash[:notice] = 'Profile successfully updated'
       redirect_to user_path(@user)
