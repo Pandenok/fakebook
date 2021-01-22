@@ -57,7 +57,7 @@ end
   )
 end
 
-User.male.each do |user|
+User.male.where.not(lastname: 'Flintstone').each do |user|
   url = URI.parse(Faker::Avatar.image(set: "set2", bgset: "bg1"))
   filename = File.basename(url.path)
   file = URI.open(url)
