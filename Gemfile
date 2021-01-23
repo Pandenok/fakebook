@@ -56,7 +56,7 @@ gem 'faker', '~> 2.15', '>= 2.15.1'
 # An XML toolkit for Ruby
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 # Official Twilio SendGrid Gem to Interact with Twilio SendGrids API in native Ruby
-gem 'sendgrid-ruby'
+# gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
