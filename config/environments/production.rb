@@ -71,16 +71,27 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'nameless-tor-20288.herokuapp.com', protocol: 'https' }
 
   # Configure ActionMailer to Use SendGrid
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   user_name: ENV['SENDGRID_USERNAME'],
+  #   password: ENV['SENDGRID_PASSWORD'],
+  #   domain: 'nameless-tor-20288.herokuapp.com',
+  #   address: 'smtp.sendgrid.net',
+  #   port: 587,
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }
+
+  # Configure ActionMailer to Use Gmail
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'nameless-tor-20288.herokuapp.com',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    port: 587,
+    address: 'smtp.gmail.com',
+    user_name: ENV['SMTP_USER_NAME'],
+    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
