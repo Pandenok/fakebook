@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+gem 'rails', '~> 6.1', '>= 6.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -39,11 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Forms made easy!
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
 # Flexible authentication solution for Rails based on Warden
-gem 'devise', '~> 4.7', '>= 4.7.3'
+# gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 # Webpacker
 gem 'webpacker', '~> 5.x'
 # Facebook OAuth2 Strategy for OmniAuth
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 8.0'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro', '~> 1.2'
 # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
@@ -52,6 +53,8 @@ gem 'jquery-rails', '~> 4.4'
 gem 'aws-sdk-s3'
 # Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 2.15', '>= 2.15.1'
+# An XML toolkit for Ruby
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -78,7 +81,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.34'
-  # gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Run Selenium tests more easily with install and updates for all supported webdrivers
   gem 'webdrivers'
