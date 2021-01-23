@@ -42,8 +42,6 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Webpacker
 gem 'webpacker', '~> 5.x'
-# Pry
-gem 'pry', '~> 0.13.1'
 # Facebook OAuth2 Strategy for OmniAuth
 gem 'omniauth-facebook'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
