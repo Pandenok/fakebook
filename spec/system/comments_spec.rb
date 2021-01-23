@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Comments", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
-    Capybara.page.current_window.resize_to(1920, 1080)
+    Capybara.page.current_window.resize_to(1440, 900)
 
     @user = create(:user)
     @another_user = create(:user)

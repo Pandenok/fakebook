@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
-    Capybara.page.current_window.resize_to(1920, 1080)
+    Capybara.page.current_window.resize_to(1440, 900)
 
     @user = create(:user)
     @other_user = create(:user)
@@ -24,7 +24,7 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_css("img[src*='cover_photo.jpg']", wait: 20)
   end
 
-  scenario 'User can edit profile info' do
+ scenario 'User can edit profile info' do
     visit user_path(@user)
     find('span', text: 'Edit Profile').click
     fill_in 'user_bio', with: @bio
@@ -43,7 +43,9 @@ RSpec.describe "Users", type: :system do
 
   scenario 'User can preview profiles of other users' do
     visit users_path
-    other_user_card = find('h1', text: 'People You May Know').sibling('div', text: @other_user.fullname)
+    other_user_card = find('h1', text: 'People You May Know')
+      .sibling('div', text: @other_user.fullname)
+      .find('a', text: @other_user.fullname)
     other_user_card.click
     other_user_profile = find('#profile-section').find('.mt-8.text-center.text-4xl.font-bold')
 

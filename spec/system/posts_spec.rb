@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
-    Capybara.page.current_window.resize_to(1920, 1080)
+    Capybara.page.current_window.resize_to(1440, 900)
     
     @user = create(:user)
     @friend = create(:user)
     @user.friends << @friend
-    @friend_post = @friend.posts.create(body: Faker::Hipster.sentence)
-    @text = Faker::Hipster.sentence
-    @edited_text = Faker::Hipster.sentence
+    @friend_post = @friend.posts.create(body: "Jean shorts trust fund fanny pack poutine. Lumbersexual cred lomo. Poutine diy typewriter.")
+    @text = "Five dollar toast echo chambray vegan kitsch mumblecore blog semiotics."
+    @edited_text = "Brooklyn master loko. Marfa viral sartorial art party quinoa cred single origin coffee."
     login_as(@user, scope: :user)
   end
 
