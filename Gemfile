@@ -45,6 +45,7 @@ gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'webpacker', '~> 5.x'
 # Facebook OAuth2 Strategy for OmniAuth
 gem 'omniauth-facebook', '~> 8.0'
+gem "omniauth", "~> 1.9.1" # Can not move to 2.0 because of devise - https://github.com/heartcombo/devise/pull/5327
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro', '~> 1.2'
 # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
