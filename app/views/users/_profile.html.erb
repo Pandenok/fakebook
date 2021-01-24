@@ -140,7 +140,7 @@
           </div>
         </div>
       <% end %>
-      <%= render partial: 'posts/news_feed', locals: { posts: @user.posts } %>
+      <%= render partial: 'posts/news_feed', locals: { posts: @user.posts.order('created_at DESC') } %>
     </div>
   </div>
 </div>
